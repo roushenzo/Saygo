@@ -25,6 +25,7 @@
 /public/stylesheets/*.css
 /public/system
 /spec/fixtures/**/*
+/public/uploads
 /test/*
 /tmp/*
 /tmp/**/*
