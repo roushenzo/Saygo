@@ -2,7 +2,7 @@ class CreatePages < ActiveRecord::Migration
   def change
     create_table :pages do |t|
       t.string :title
-      t.text :description
+      t.text :content
       t.integer :category_id
       t.string :url
       t.string :meta_title
