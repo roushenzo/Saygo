@@ -1,9 +1,21 @@
 ActiveAdmin.register Page do
+  index do
+    column :id
+    column :title
+    column :url
+    column :country
+    column :city
+    column :category
+    column :created_at
+    column :updated_at
+    default_actions
+  end
+
   form do |f|
     f.inputs "General info" do
       f.input :url, :as => :url
       f.input :title
-      f.input :description
+      f.input :content
       f.input :country, :as => :string
       f.input :city
       f.input :category, :as => :select
