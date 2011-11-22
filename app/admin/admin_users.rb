@@ -1,4 +1,10 @@
 ActiveAdmin.register AdminUser do
+  index do
+    column :id
+    column :email
+    column :created_at
+    default_actions
+  end
   form do |f|
     f.inputs do
       f.input :email
