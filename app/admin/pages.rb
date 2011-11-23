@@ -8,6 +8,9 @@ ActiveAdmin.register Page do
     column :category
     column :created_at
     column :updated_at
+    column I18n.t('active_admin.content')  do |page|
+       link_to(I18n.t('active_admin.edit'), '/editor' + page_path(page), :class => "member_link edit_link")
+    end
     default_actions
   end
 
@@ -15,7 +18,6 @@ ActiveAdmin.register Page do
     f.inputs "General info" do
       f.input :url, :as => :url
       f.input :title
-#      f.input :content
       f.input :country, :as => :string
       f.input :city
       f.input :category, :as => :select
