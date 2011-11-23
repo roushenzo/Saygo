@@ -1,9 +1,12 @@
 Saygo::Application.routes.draw do
+  Mercury::Engine.routes
+
   resources :pages
   resources :categories
   ActiveAdmin.routes(self)
   devise_for :admin_users, ActiveAdmin::Devise.config
   root :to => 'pages#index'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

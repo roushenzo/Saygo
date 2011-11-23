@@ -22,7 +22,18 @@
  * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
+ * Minimum jQuery requirements are 1.6
+ *= require mercury/dependencies/jquery-1.6
+ *
+ * You can include the Rails jQuery ujs script here to get some nicer behaviors in modals, panels and lightviews when
+ * using :remote => true within the contents rendered in them.
+ * require jquery_ujs
+ *
  *= require_self
+ *
+ * If you want to override Mercury functionality, you can do so in a custom file that binds to the mercury:loaded event,
+ * or do so at the end of the current file (mercury.js).  There's an example that will help you get started.
+ * require mercury_overrides
  *
  * Add all requires for the support libraries that integrate nicely with Mercury Editor.
  * require mercury/support/history
@@ -33,7 +44,7 @@
  * Add all requires for plugins that extend or change the behavior of Mercury Editor.
  * require mercury/plugins/save_as_xml/plugin.js
  */
-window.MercurySetup = {
+window.Mercury = {
 
   // # Mercury Configuration
   config: {
@@ -252,8 +263,11 @@ window.MercurySetup = {
         td:     ['colspan', 'rowspan'],
         div:    ['class'],
         span:   ['class'],
+        ul:     [],
+        ol:     [],
+        li:     [],
         b:      [],
-        bold:   [],
+        strong: [],
         i:      [],
         em:     [],
         u:      [],
@@ -325,7 +339,7 @@ window.MercurySetup = {
     // and
     // Mercury.Toolbar.ButtonGroup.contexts
 
-    
+
     // ## Region Class
     //
     // Mercury identifies editable regions by a region class.  This class has to be added in your HTML in advance, and
@@ -335,7 +349,7 @@ window.MercurySetup = {
     // class with '-preview' appended (so, mercury-region-preview by default)
     regionClass: 'mercury-region',
 
-    
+
     // ## Styles
     //
     // Mercury tries to stay as much out of your code as possible, but because regions appear within your document we
@@ -347,10 +361,9 @@ window.MercurySetup = {
       '.{{regionClass}} { min-height: 10px; outline: 1px dotted #09F } ' +
       '.{{regionClass}}:focus, .{{regionClass}}.focus { outline: none; -webkit-box-shadow: 0 0 10px #09F, 0 0 1px #045; box-shadow: 0 0 10px #09F, 0 0 1px #045 }' +
       '.{{regionClass}}:after { content: "."; display: block; visibility: hidden; clear: both; height: 0; overflow: hidden; }' +
-      '.{{regionClass}} table, .{{regionClass}} td, .{{regionClass}} th { border: 1px dotted red; }' +
-      '.mercury-textarea { box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; resize: vertical; }' +
-      '.mercury-textarea { min-height: 10px; outline: 1px dotted #09F }' +
-      '.mercury-textarea:focus, .mercury-textarea.focus { outline: none; -webkit-box-shadow: 0 0 10px #09F, 0 0 1px #045; box-shadow: 0 0 10px #09F, 0 0 1px #045 }'
+      '.{{regionClass}} table, .{{regionClass}} td, .{{regionClass}} th { border: 1px dotted red; min-width: 6px; }' +
+      '.mercury-textarea { border: 0; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; resize: none; }' +
+      '.mercury-textarea:focus { outline: none; }'
   },
 
   // ## Silent Mode
@@ -365,5 +378,20 @@ window.MercurySetup = {
 
 };
 
-if (!window.Mercury) window.Mercury = window.MercurySetup;
-else if (typeof(jQuery) !== 'undefined') jQuery.extend(window.Mercury, window.MercurySetup);
+// The mercury:loaded event is provided in case you want to override default Mercury Editor behavior.  It will fire
+// directly after the Mercury scripts have loaded, but before anything has been initialized.  It's a good place to add
+// or change functionality.
+jQuery(window).bind('mercury:loaded', function() {
+  //Mercury.PageEditor.prototype.iframeSrc = function(url) { return '/testing'; }
+});
+
+$(window).bind('mercury:ready', function() {
+  var link = $('#mercury_iframe').contents().find('#edit_link');
+  Mercury.saveURL = link.data('save-url');
+  link.hide();
+});
+
+$(window).bind('mercury:saved', function() {
+  window.location = window.location.href.replace(/\/editor\//i, '/admin/');
+});
+

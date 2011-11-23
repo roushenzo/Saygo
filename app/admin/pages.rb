@@ -1,4 +1,8 @@
 ActiveAdmin.register Page do
+  show do
+    render :template => 'pages/show'
+  end
+
   index do
     column :id
     column :title
@@ -32,5 +36,12 @@ ActiveAdmin.register Page do
     end
 
     f.buttons
+  end
+
+  member_action :mercury_update, :method => :put do
+    @page = Page.find_by_title(params[:id]) || Page.find_by_id(params[:id])
+    @page.content = params[:content][:page_content][:value]
+    @page.save!
+    render :text => ''
   end
 end
