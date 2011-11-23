@@ -1,4 +1,7 @@
-<div id="page_content" class="mercury-region" data-type="editable">
+<h3><%= @page.title %></h3>
+<div id="page_content" class="mercury-region clear" data-type="editable">
     <%= raw @page.content %>
 </div>
-<%= link_to "Edit Page", "/editor" + page_path(@page), :id => "edit_link", :data => {:save_url => mercury_update_admin_page_path(@page)} %>
+<% if current_admin_user %>
+    <%= link_to "Edit Page", "/editor#{page_path(@page)}", :id => "edit_link", :data => {:save_url => mercury_update_admin_page_path(@page)} %>
+<% end %>

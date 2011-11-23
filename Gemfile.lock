@@ -1,15 +1,12 @@
 GIT
   remote: https://github.com/jejacks0n/mercury.git
-  revision: a2b16bcdc96f12a21c04e95e145588595847523b
-  ref: a2b16bcdc9
+  revision: 38df02f55e55b1656581b893b14a6e3e006f9b78
+  ref: 38df02f55e55b1656581b893b14a6e3e006f9b78
   specs:
     mercury-rails (0.2.3)
       coffee-script
-      formtastic
-      json
       paperclip
       rails (~> 3.1.0)
-      sass-rails
 
 GEM
   remote: http://rubygems.org/

@@ -10,8 +10,7 @@ gem 'json'
 gem 'activeadmin'
 gem 'meta_search', '>= 1.1.0.pre' # requires for activeadmin
 gem 'carrierwave'
-#gem 'mercury-rails'
-gem 'mercury-rails', :git => 'https://github.com/jejacks0n/mercury.git', :ref => 'a2b16bcdc9'
+gem 'mercury-rails', :git => 'https://github.com/jejacks0n/mercury.git', :ref => '38df02f55e55b1656581b893b14a6e3e006f9b78'
 
 # Gems used only for assets and not required
 # in production environments by default.

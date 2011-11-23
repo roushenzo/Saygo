@@ -22,14 +22,14 @@
  * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *
- * Minimum jQuery requirements are 1.6
- *= require mercury/dependencies/jquery-1.6
+ *= require_self
+ *
+ * Minimum jQuery requirements are 1.7
+ *= require mercury/dependencies/jquery-1.7
  *
  * You can include the Rails jQuery ujs script here to get some nicer behaviors in modals, panels and lightviews when
  * using :remote => true within the contents rendered in them.
- * require jquery_ujs
- *
- *= require_self
+ *= require jquery_ujs
  *
  * If you want to override Mercury functionality, you can do so in a custom file that binds to the mercury:loaded event,
  * or do so at the end of the current file (mercury.js).  There's an example that will help you get started.
@@ -41,8 +41,13 @@
  * Require Mercury Editor itself.
  *= require mercury/mercury
  *
+ * Require any localizations you wish to support
+ * Example: es.locale, or fr.locale -- regional dialects are in each language file so never en_US for instance.
+ * require mercury/locales/swedish_chef.locale
+ *
  * Add all requires for plugins that extend or change the behavior of Mercury Editor.
  * require mercury/plugins/save_as_xml/plugin.js
+ *= require mercury_changes
  */
 window.Mercury = {
 
@@ -69,30 +74,33 @@ window.Mercury = {
     //
     // ### The available button types are:
     //
-    // - toggle:  toggles on or off when clicked, otherwise behaves like a button
-    // - modal:   opens a modal window, expects the action to be one of:
+    // - toggle:    toggles on or off when clicked, otherwise behaves like a button
+    // - modal:     opens a modal window, expects the action to be one of:
     //   1. a string url
     //   2. a function that returns a string url
-    // - panel:   opens a panel dialog, expects the action to be one of:
+    // - lightview: opens a lightview window (like modal, but different UI), expects the action to be one of:
     //   1. a string url
     //   2. a function that returns a string url
-    // - palette: opens a palette window, expects the action to be one of:
+    // - panel:     opens a panel dialog, expects the action to be one of:
     //   1. a string url
     //   2. a function that returns a string url
-    // - select:  opens a pulldown style window, expects the action to be one of:
+    // - palette:   opens a palette window, expects the action to be one of:
     //   1. a string url
     //   2. a function that returns a string url
-    // - context: calls a callback function, expects the action to be:
+    // - select:    opens a pulldown style window, expects the action to be one of:
+    //   1. a string url
+    //   2. a function that returns a string url
+    // - context:   calls a callback function, expects the action to be:
     //   1. a function that returns a boolean to highlight the button
     //   note: if a function isn't provided, the key will be passed to the contextHandler, in which case a default
     //         context will be used (for more info read the Contexts section below)
-    // - mode:    toggle a given mode in the editor, expects the action to be:
+    // - mode:      toggle a given mode in the editor, expects the action to be:
     //   1. a string, denoting the name of the mode
     //   note: it's assumed that when a specific mode is turned on, all other modes will be turned off, which happens
     //         automatically, thus putting the editor into a specific "state"
-    // - regions: allows buttons to be enabled/disabled based on what region type has focus, expects the action to be:
+    // - regions:   allows buttons to be enabled/disabled based on what region type has focus, expects the action to be:
     //   1. an array of region types (eg. ['editable', 'markupable'])
-    // - preload: allows some dialog views to be loaded when the button is created instead of on first open, expects:
+    // - preload:   allows some dialog views to be loaded when the button is created instead of on first open, expects:
     //   1. a boolean true / false
     //   note: this is only used by panels, selects, and palettes
     //
@@ -159,8 +167,8 @@ window.Mercury = {
           sep:                 '-'
           },
         indent:                {
-          outdent:             ['Decrease Indentation', null],
-          indent:              ['Increase Indentation', null],
+          outdent:             ['Decrease Indentation'],
+          indent:              ['Increase Indentation'],
           sep:                 '-'
           },
         table:                 {
@@ -194,12 +202,27 @@ window.Mercury = {
       snippetable: {
         _custom:               true,
         actions:               {
-          editSnippet:         ['Edit Snippet Settings', null],
+          editSnippet:         ['Edit Snippet Settings'],
           sep1:                ' ',
-          removeSnippet:       ['Remove Snippet', null]
+          removeSnippet:       ['Remove Snippet']
           }
         }
       },
+
+
+    // ## Localization / I18n
+    //
+    // Include the .locale files you want to support when loading mercury.. the files are always named by the language,
+    // and not the regional dialect (eg. en.locale.js) because the regional dialects are nested within the primary
+    // locale files.
+    //
+    // The client locale will be used first, and if no proper locale file is found for their language then the fallback
+    // preferredLocale configuration will be used.  If one isn't provided, and the client locale isn't included, the
+    // strings will remain untranslated.
+    localization: {
+      enabled: false,
+      preferredLocale: 'swedish_chef-BORK'
+    },
 
 
     // ## Hijacking Links & Forms
@@ -309,7 +332,7 @@ window.Mercury = {
       allowedMimeTypes: ['image/jpeg', 'image/gif', 'image/png'],
       maxFileSize: 1235242880,
       inputName: 'image[image]',
-      url: '/images',
+      url: '/mercury/images',
       handler: false
       },
 
@@ -350,6 +373,16 @@ window.Mercury = {
     regionClass: 'mercury-region',
 
 
+    // ## Region Data Attributes
+    //
+    // These attributes, when applied to a Mercury region element, will be automatically serialized and submitted
+    // with the AJAX request sent when a page is saved. These are expected to be HTML5 data attributes, and 'data-'
+    // will automatically be prepended to each attribute listed here.
+    //
+    // Example: regionDataAttributes: ['scope', 'version']
+    regionDataAttributes: [],
+
+
     // ## Styles
     //
     // Mercury tries to stay as much out of your code as possible, but because regions appear within your document we
@@ -374,24 +407,13 @@ window.Mercury = {
   // ## Debug Mode
   //
   // Turning debug mode on will log events and other various things (using console.debug if available).
-  debug: false
+  debug: false,
+
+  // The onload method is provided as a callback in case you want to override default Mercury Editor behavior.  It will
+  // be called directly after the Mercury scripts have loaded, but before anything has been initialized.  It's a good
+  // place to add or change functionality.
+  onload: function() {
+    //Mercury.PageEditor.prototype.iframeSrc = function(url) { return '/testing'; }
+  }
 
 };
-
-// The mercury:loaded event is provided in case you want to override default Mercury Editor behavior.  It will fire
-// directly after the Mercury scripts have loaded, but before anything has been initialized.  It's a good place to add
-// or change functionality.
-jQuery(window).bind('mercury:loaded', function() {
-  //Mercury.PageEditor.prototype.iframeSrc = function(url) { return '/testing'; }
-});
-
-$(window).bind('mercury:ready', function() {
-  var link = $('#mercury_iframe').contents().find('#edit_link');
-  Mercury.saveURL = link.data('save-url');
-  link.hide();
-});
-
-$(window).bind('mercury:saved', function() {
-  window.location = window.location.href.replace(/\/editor\//i, '/admin/');
-});
-
