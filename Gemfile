@@ -13,16 +13,11 @@ gem 'carrierwave'
 gem 'mercury-rails', :git => 'https://github.com/jejacks0n/mercury.git', :ref => '38df02f55e55b1656581b893b14a6e3e006f9b78'
 gem 'unicorn'
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.1.4'
-  gem 'coffee-rails', '~> 3.1.1'
-  gem 'uglifier', '>= 1.0.3'
-  gem 'capistrano'
-end
-
+gem 'sass-rails',   '~> 3.1.4'
+gem 'coffee-rails', '~> 3.1.1'
+gem 'uglifier', '>= 1.0.3'
 gem 'jquery-rails'
+gem 'therubyracer'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
