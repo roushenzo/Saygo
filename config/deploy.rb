@@ -10,7 +10,7 @@ set :use_sudo, false
 set :user, "ubuntu"
 set :scm, :git
 set :repository, "ubuntu@dev.saygo.ru:/home/ubuntu/saygo.git"
-set :deploy_via, :remote_cache
+set :deploy_via, :checkout
 set :unicorn_conf, "#{deploy_to}/current/config/unicorn.rb"
 set :unicorn_pid, "#{deploy_to}/shared/pids/unicorn.pid"
 
