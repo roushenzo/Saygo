@@ -1,4 +1,6 @@
 Saygo::Application.routes.draw do
+  resources :countries
+
   Mercury::Engine.routes
 
   resources :pages

@@ -22,8 +22,8 @@ ActiveAdmin.register Page do
     f.inputs "General info" do
       f.input :url, :as => :url
       f.input :title
-      f.input :country, :as => :string
-      f.input :city
+      f.input :country, :as => :select
+      f.input :city, :as => :select
       f.input :category, :as => :select
     end
 
@@ -41,6 +41,7 @@ ActiveAdmin.register Page do
   member_action :mercury_update, :method => :put do
     @page = Page.find_by_title(params[:id]) || Page.find_by_id(params[:id])
     @page.content = params[:content][:page_content][:value]
+    @page.title = params[:content][:page_title][:value]
     @page.save!
     render :text => ''
   end

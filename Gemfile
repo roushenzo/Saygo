@@ -18,7 +18,14 @@ gem 'coffee-rails', '~> 3.1.1'
 gem 'uglifier', '>= 1.0.3'
 gem 'jquery-rails'
 gem 'therubyracer'
+gem 'russian'
+gem 'rmagick'
 
+group :test, :development do
+  gem "rspec-rails", "~> 2.6"
+  gem 'fabrication'
+  gem 'faker'
+end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

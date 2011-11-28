@@ -4,10 +4,10 @@ class CreatePages < ActiveRecord::Migration
       t.string :title
       t.text :content
       t.integer :category_id
+      t.integer :country_id
+      t.integer :city_id
       t.string :url
       t.string :meta_title
-      t.string :country
-      t.string :city
       t.text :meta_keys
       t.text :meta_description
 
