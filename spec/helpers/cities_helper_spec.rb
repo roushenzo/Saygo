@@ -1,18 +1,15 @@
 require 'spec_helper'
 
 # Specs in this file have access to a helper object that includes
-# the CountriesHelper. For example:
+# the CitiesHelper. For example:
 #
-# describe CountriesHelper do
+# describe CitiesHelper do
 #   describe "string concat" do
 #     it "concats two strings with spaces" do
 #       helper.concat_strings("this","that").should == "this that"
 #     end
 #   end
 # end
-describe CountriesHelper do
-  it {
-    10.times {Fabricate(:country)}
-    helper.list_countries(Country.all).should be_present
-  }
+describe CitiesHelper do
+  pending "add some examples to (or delete) #{__FILE__}"
 end

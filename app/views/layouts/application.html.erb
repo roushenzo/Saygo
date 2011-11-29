@@ -10,21 +10,13 @@
 <body>
     <div class="main">
         <div class="header clear">
-            <!--logo-->
-            <h1><a  class="logo txt" href="main.html" title="SayGo">
-                <span class="slogan txt">Мир путешествий</span>
-            </a></h1>
+            <h1>
+                <%= link_to root_path, :class => 'logo txt', :title => 'Saygo' do %>
+                    <span class="slogan txt">Мир путешествий</span>
+                <% end %>
+            </h1>
         </div>
-        <div class="clear">
-            <ul class="top-menu list0">
-                <li><a href="main.html">Страны</a></li>
-                <li><a href="#">Города</a></li>
-                <li><a class="active" href="our_sity.html">О городе</a></li>
-                <li><a href="features_sity.html">Достопримечательности</a></li>
-                <li><a href="#">Развлечения</a></li>
-                <li><a href="#">Места</a></li>
-            </ul>
-        </div>
+        <div class='clear'><%= render_navigation %></div>
         <div class="coontent content-indent1">
             <!--row-box3-->
             <div class="row-box3">
@@ -32,30 +24,19 @@
                     <!--right-->
                     <div class="col-right fright">
                         <%= yield %>
-                        <a href="#" class="text-button button-width1 text-button-indent"><span><span>Посмотреть все достопримечательности</span></span></a>
                     </div>
                     <!--left-->
                     <div class="col-left fleft">
-                        <h3>Тайланд</h3>
-                        <ul class="list2">
-                            <li class="active"><a href="#">Общие сведения о Тайланде</a></li>
-                            <li><a href="#">Культура</a></li>
-                            <li><a href="#">Национальная кухня</a></li>
-                            <li><a href="#">Транспорт</a></li>
-                        </ul>
-                        <h3 class="title-top title-bottom2">Интересные факты</h3>
-                        <ul class="list3">
-                            <li><a href="#">Остров Аруба заселен с 1000 г. и имеет богатую...</a></li>
-                            <li><a href="#">Игл-Бич представляет собой идилли ческий пляж Карибского...</a></li>
-                            <li><a href="#">Остров Аруба заселен с 1000 г. и имеет богатую...</a></li>
-                            <li><a href="#">Игл-Бич представляет собой идилли ческий пляж Карибского...</a></li>
-                        </ul>
+                        <%= yield :side_bar %>
                     </div>
                 </div>
             </div>
         </div>
         <div class="footer">
-            <div class="fright banner-footer"><a href="#"><img src="/assets/banner1.gif" alt="" /></a><a href="#"><img src="/assets/banner2.gif" alt="" /></a></div>
+            <div class="fright banner-footer">
+                <a href="#"><img src="/assets/banner1.gif" alt="" /></a>
+                <a href="#"><img src="/assets/banner2.gif" alt="" /></a>
+            </div>
             <p class="fleft">Coopyright SayGO 2011 . Все права защищены</p>
         </div>
     </div>

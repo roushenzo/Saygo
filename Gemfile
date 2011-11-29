@@ -19,7 +19,9 @@ gem 'uglifier', '>= 1.0.3'
 gem 'jquery-rails'
 gem 'therubyracer'
 gem 'russian'
+gem 'i18n_generators'
 gem 'rmagick'
+gem 'simple-navigation'
 
 group :test, :development do
   gem "rspec-rails", "~> 2.6"

@@ -5,9 +5,10 @@ Saygo::Application.routes.draw do
 
   resources :pages
   resources :categories
+  resources :cities
   ActiveAdmin.routes(self)
   devise_for :admin_users, ActiveAdmin::Devise.config
-  root :to => 'pages#index'
+  root :to => 'countries#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

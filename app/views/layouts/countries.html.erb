@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Saygo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+</head>
+<body>
+    <div class="main">
+        <div class="header clear">
+            <h1>
+                <%= link_to root_path, :class => 'logo txt', :title => 'Saygo' do %>
+                    <span class="slogan txt">Мир путешествий</span>
+                <% end %>
+            </h1>
+        </div>
+        <div class='clear'><%= render_navigation %></div>
+        <div class='coontent content-indent'>
+            <%= yield :submenu %>
+            <!--row-box1-->
+            <div class="row-box1 row-box1-indent">
+                <div class="clear">
+                    <!--right-->
+                    <div class="col-right fright">
+                        <h3>Достопримечательность дня</h3>
+                        <div class="clear">
+                            <img src="images/img1.jpg" alt="" class="img-indent">
+                            <h4>Палм-/Игл-Бич, Аруба<span>Пожалуй красивейший закат в мире</span></h4>
+                           <p class="text1"> Остров Аруба заселен с 1000 г. и имеет богатую историю и культуру. Игл-Бич представляет собой идиллический пляж Карибского моря: белый песок, бирюзового цвета вода – именно поэтому он так любим многочисленными.....</p>
+                            <p class="link-top"><a href="#" class="link">Подробнее</a></p>
+                        </div>
+                    </div>
+                    <!--left-->
+                    <div class="col-left fleft">
+                        <h3>Поиск</h3>
+                        <form name="form-search" action="" method="post">
+                            <div class="form-search clear">
+                                <div class="search-button-menu fleft">
+                                    <ul class="search-button">
+                                        <li><a class="active" href="#"><span>Достопримечательности</span></a></li>
+                                        <li><a href="#"><span>Развлечения</span></a></li>
+                                        <li><a href="#"><span>Магазины</span></a></li>
+                                        <li><a href="#"><span>Рестораны</span></a></li>
+                                        <li><a href="#"><span>Ночная жизнь</span></a></li>
+                                    </ul>
+                                </div>
+                                <div class="search-content fleft">
+                                     <div class="row-form clear">
+                                        <div class="row-form-left fleft">Страна:</div>
+                                        <div class="row-form-right fleft"><select><option>Выбирите старну</option></select></div>
+                                     </div>
+                                     <div class="row-form clear">
+                                        <div class="row-form-left fleft">Город:</div>
+                                        <div class="row-form-right fleft"><select><option>Выбирите город</option></select></div>
+                                     </div>
+                                     <div class="row-form clear">
+                                        <div class="row-form-left fleft">Название:</div>
+                                        <div class="row-form-right fleft"><select><option>Введите название</option></select></div>
+                                     </div>
+                                     <input type="submit" name="send" value="&nbsp;" onfocus="this.blur()" class="button-submit">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!--row-box2-->
+            <div class="row-box2">
+                <div class="clear">
+                    <!--right-->
+                    <div class="col-right fright">
+                        <h3 class="title-bottom1"><strong>Топ 10</strong> направлений</h3>
+                        <ul class="list-top-10">
+                            <li><span class="bg1">1</span><a class="marker1" href="#">Турция</a></li>
+                            <li><span class="bg2">2</span><a class="marker2" href="#">Египет</a></li>
+                            <li><span class="bg3">3</span><a class="marker3" href="#">Таиланд</a></li>
+                            <li><span>4</span><a class="marker4" href="#">Индия</a></li>
+                            <li><span>5</span><a class="marker5" href="#">Австралия</a></li>
+                            <li><span>6</span><a class="marker6" href="#">Хорватия</a></li>
+                            <li><span>7</span><a class="marker7" href="#">Германия</a></li>
+                            <li><span>8</span><a class="marker8" href="#">Венгрия</a></li>
+                            <li><span>9</span><a class="marker9" href="#">США</a></li>
+                            <li><span>10</span><a class="marker10" href="#">Канада</a></li>
+                        </ul>
+                    </div>
+                    <!--left-->
+                    <div class="col-left fleft">
+                        <h3 class="title-bottom">Достопримечательности стран</h3>
+                       <div class="text-indent">
+                             Достопримечательности Европы и достопримечательности Азии, да, наконец,достопримечательности всего мира – кто не мечтал увидеть их своими глазами! Побывать в древних храмах и роскошных дворцах, посетить самые знаменитые музеи, погулять по старинным улочкам тысячелетних европейских городов. Вот только определиться с выбором – куда именно поехать – не всегда бывает просто. Мы решили помочь вам в этом – на нашем сайте вы найдете описания всех
+                        <br>
+                        сколько-нибудь значимых достопримечательностей разных стран, архитектурных и культурных памятников, нерукотворных природных чудес и чудес, созданных руками человека.
+                        <p class="indent-top">
+                            Мы постарались сделать все возможное, чтобы наш сайт не только помог вам определиться с местом назначения, но и спланировать путешествие заранее. Поэтому и наполнили его страницы самой разнообразной информацией, очень <br>
+                            полезной путешественнику – помимо описаниядостопримечательностей стран здесь есть и описания быта, нравов, культуры той или иной страны, традиций и национальной кухни, а также многих других аспектов. Хотите узнать, какой именно транспорт есть в Гватемале, как им лучше всего пользоваться и насколько это удобно? Просто зайдите на наш сайт и прочитайте об этом. Вам интересно, как выглядит ночной Пекин, что подают на завтрак в Северной Ирландии или какие сувениры лучше всего покупать в Бирме? Ответы на эти вопросы тоже есть на нашем сайте.
+                            <br>
+                            Те, кто впервые планирует поездку за границу, найдут у нас описания отелей, наиболее удобных маршрутов и схем передвижения, описания местной валюты разных стран и национальных особенностей, и благодаря этому смогут с самого начала оптимально организовать свою поездку. Будет полезен наш сайт и бывалым, опытным туристам – здесь они смогут прочитать о местах, где еще не бывали, о достопримечательностях Европы и Азии, которые еще не успели увидеть, ну и просто еще раз встретиться с теми странами и местами, которые уже посещали, вспомнить собственное путешествие.<br>
+                            Вы пока не планируете никуда ехать? Значит, вам просто будет интересно узнать что-нибудь новое, познакомиться заочно с новыми странами, узнать любопытные факты о них. Вполне возможно, что занимательная и полезная информация, размещенная на нашем сайте, все-таки соблазнит вас увидеть лучшие достопримечательности мира воочию и оценить их красоту.
+                        </p>
+                       </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
