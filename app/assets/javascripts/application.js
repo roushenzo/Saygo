@@ -7,4 +7,3 @@
 //= require jquery
 //= require jquery_ujs
 //= mercury
-//= require pages
