@@ -27,6 +27,10 @@ ActiveAdmin.register Page do
       f.input :category, :as => :select
     end
 
+    f.inputs 'Boolean flags' do
+      f.input :sight_of_the_day
+    end
+
     f.inputs :meta_title, :meta_keys, :meta_description, :name => "Meta tags"
 
     f.has_many :photos do |fi|

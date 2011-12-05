@@ -7,4 +7,14 @@ class Page < ActiveRecord::Base
   validates :url, :title, :presence => true
   validates :country, :associated => true, :if => Proc.new {|p| p.city.present?}
   validates :city, :associated => true, :if => Proc.new {|p| p.category.present?}
+  after_save :reset_sights_of_the_day, :if => "sight_of_the_day? && sight_of_the_day_changed?"
+
+  def self.current_sight_of_the_day
+    where(:sight_of_the_day => true).last || first
+  end
+
+  private
+  def reset_sights_of_the_day
+    self.class.update_all "sight_of_the_day = 0", ["id <> ? AND sight_of_the_day = 1", self.id]
+  end
 end
