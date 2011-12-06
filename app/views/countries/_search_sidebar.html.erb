@@ -1,0 +1,35 @@
+<h3>Поиск</h3>
+<%= form_for :search, :method => :get do |f| %>
+    <div class="form-search clear">
+        <div class="search-button-menu fleft">
+            <ul class="search-button">
+                <% @search_categories.each do |c| %>
+                    <li>
+                        <%= link_to "<span>#{c.name}</span>".html_safe, 'javascript:void(0);' %>
+                    </li>
+                <% end %>
+            </ul>
+        </div>
+        <div class="search-content fleft">
+             <div class="row-form clear">
+                <div class="row-form-left fleft">Страна:</div>
+                <div class="row-form-right fleft">
+                    <%= f.collection_select :country_id, @countries, :id, :name, :prompt => 'Выберите страну' %>
+                </div>
+             </div>
+             <div class="row-form clear">
+                <div class="row-form-left fleft">Город:</div>
+                <div class="row-form-right fleft">
+                    <%= f.select :city_id, [], :prompt => 'Выберите город' %>
+                </div>
+             </div>
+             <div class="row-form clear">
+                <div class="row-form-left fleft">Название:</div>
+                <div class="row-form-right fleft">
+                    <%= f.text_field :title %>
+                </div>
+             </div>
+             <input type="submit" name="send" value="&nbsp;" onfocus="this.blur()" class="button-submit">
+        </div>
+    </div>
+<% end %>

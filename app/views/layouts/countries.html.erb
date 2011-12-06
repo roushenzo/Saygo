@@ -30,41 +30,13 @@
                                 <%= raw @sight_of_the_day.content %>
                             </div>
                             <p class='link-top'>
-                                <%= link_to t('.more'), page_path(@sight_of_the_day), :class => 'link' %>
+                                <%= link_to 'Подробнее', page_path(@sight_of_the_day), :class => 'link' %>
                             </p>
                         <% end %>
                     </div>
                     <!--left-->
                     <div class="col-left fleft">
-                        <h3>Поиск</h3>
-                        <form name="form-search" action="" method="post">
-                            <div class="form-search clear">
-                                <div class="search-button-menu fleft">
-                                    <ul class="search-button">
-                                        <li><a class="active" href="#"><span>Достопримечательности</span></a></li>
-                                        <li><a href="#"><span>Развлечения</span></a></li>
-                                        <li><a href="#"><span>Магазины</span></a></li>
-                                        <li><a href="#"><span>Рестораны</span></a></li>
-                                        <li><a href="#"><span>Ночная жизнь</span></a></li>
-                                    </ul>
-                                </div>
-                                <div class="search-content fleft">
-                                     <div class="row-form clear">
-                                        <div class="row-form-left fleft">Страна:</div>
-                                        <div class="row-form-right fleft"><select><option>Выбирите старну</option></select></div>
-                                     </div>
-                                     <div class="row-form clear">
-                                        <div class="row-form-left fleft">Город:</div>
-                                        <div class="row-form-right fleft"><select><option>Выбирите город</option></select></div>
-                                     </div>
-                                     <div class="row-form clear">
-                                        <div class="row-form-left fleft">Название:</div>
-                                        <div class="row-form-right fleft"><select><option>Введите название</option></select></div>
-                                     </div>
-                                     <input type="submit" name="send" value="&nbsp;" onfocus="this.blur()" class="button-submit">
-                                </div>
-                            </div>
-                        </form>
+                        <%= render 'search_sidebar' %>
                     </div>
                 </div>
             </div>
@@ -78,7 +50,7 @@
                     </div>
                     <!--left-->
                     <div class="col-left fleft">
-                        <h3 class="title-bottom">Достопримечательности стран</h3>
+                       <h3 class="title-bottom">Достопримечательности стран</h3>
                        <div class="text-indent">
                              Достопримечательности Европы и достопримечательности Азии, да, наконец,достопримечательности всего мира – кто не мечтал увидеть их своими глазами! Побывать в древних храмах и роскошных дворцах, посетить самые знаменитые музеи, погулять по старинным улочкам тысячелетних европейских городов. Вот только определиться с выбором – куда именно поехать – не всегда бывает просто. Мы решили помочь вам в этом – на нашем сайте вы найдете описания всех
                         <br>
@@ -94,6 +66,10 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="footer">
+            <div class="fright banner-footer"><a href="#"><img src="/assets/banner1.gif" alt=""></a><a href="#"><img src="/assets/banner2.gif" alt=""></a></div>
+            <p class="fleft">Coopyright SayGO 2011 . Все права защищены</p>
         </div>
     </div>
 </body>
