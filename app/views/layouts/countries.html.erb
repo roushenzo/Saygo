@@ -25,9 +25,14 @@
                     <!--right-->
                     <div class="col-right fright">
                         <h3>Достопримечательность дня</h3>
-                        <div class="clear">
-                            <%= raw @sight_of_the_day.content %>
-                        </div>
+                        <% if @sight_of_the_day.present? %>
+                            <div class="clear">
+                                <%= raw @sight_of_the_day.content %>
+                            </div>
+                            <p class='link-top'>
+                                <%= link_to t('.more'), page_path(@sight_of_the_day), :class => 'link' %>
+                            </p>
+                        <% end %>
                     </div>
                     <!--left-->
                     <div class="col-left fleft">
@@ -69,18 +74,7 @@
                     <!--right-->
                     <div class="col-right fright">
                         <h3 class="title-bottom1"><strong>Топ 10</strong> направлений</h3>
-                        <ul class="list-top-10">
-                            <li><span class="bg1">1</span><a class="marker1" href="#">Турция</a></li>
-                            <li><span class="bg2">2</span><a class="marker2" href="#">Египет</a></li>
-                            <li><span class="bg3">3</span><a class="marker3" href="#">Таиланд</a></li>
-                            <li><span>4</span><a class="marker4" href="#">Индия</a></li>
-                            <li><span>5</span><a class="marker5" href="#">Австралия</a></li>
-                            <li><span>6</span><a class="marker6" href="#">Хорватия</a></li>
-                            <li><span>7</span><a class="marker7" href="#">Германия</a></li>
-                            <li><span>8</span><a class="marker8" href="#">Венгрия</a></li>
-                            <li><span>9</span><a class="marker9" href="#">США</a></li>
-                            <li><span>10</span><a class="marker10" href="#">Канада</a></li>
-                        </ul>
+                        <%= top_countries(@top_countries) %>
                     </div>
                     <!--left-->
                     <div class="col-left fleft">
