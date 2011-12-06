@@ -21,6 +21,7 @@ gem 'russian'
 gem 'i18n_generators'
 gem 'rmagick'
 gem 'simple-navigation'
+gem 'truncate_html'
 
 group :test, :development do
   gem "rspec-rails", "~> 2.6"
