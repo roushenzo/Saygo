@@ -1,5 +1,9 @@
 Saygo::Application.routes.draw do
-  resources :countries
+  resources :countries, :controller => 'pages' do
+    resources :cities, :controller => 'pages' do
+      resources :categories, :controller => 'pages'
+    end
+  end
 
   Mercury::Engine.routes
 

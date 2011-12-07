@@ -6,4 +6,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= mercury
+//= require mercury
+//= require countries

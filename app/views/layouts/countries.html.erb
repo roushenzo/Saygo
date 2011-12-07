@@ -30,7 +30,8 @@
                                 <%= raw truncate_html(@sight_of_the_day.content, :length => 1000) %>
                             </div>
                             <p class='link-top'>
-                                <%= link_to 'Подробнее', page_path(@sight_of_the_day), :class => 'link' %>
+                                <%= link_to 'Подробнее',
+                                        [@sight_of_the_day.country, @sight_of_the_day.city, @sight_of_the_day.category], :class => 'link' %>
                             </p>
                         <% end %>
                     </div>

@@ -7,6 +7,7 @@ class Page < ActiveRecord::Base
   validates :url, :title, :presence => true
   validates :country, :associated => true, :if => Proc.new {|p| p.city.present?}
   validates :city, :associated => true, :if => Proc.new {|p| p.category.present?}
+  validates_uniqueness_of :title, :scope => [:country_id, :city_id, :category_id]
   after_save :reset_sights_of_the_day, :if => "sight_of_the_day? && sight_of_the_day_changed?"
 
   def self.current_sight_of_the_day
