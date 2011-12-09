@@ -6,7 +6,7 @@
                 <% @search_categories.each do |c| %>
                     <li>
                         <%= link_to "<span>#{c.name}</span>".html_safe, 'javascript:void(0);' %>
-                        <%= f.hidden_field :category_id, :value => c.id %>
+                        <%= f.hidden_field :category_id, :value => c.id, :disabled => true %>
                     </li>
                 <% end %>
             </ul>

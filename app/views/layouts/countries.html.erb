@@ -27,6 +27,7 @@
                         <h3>Достопримечательность дня</h3>
                         <% if @sight_of_the_day.present? %>
                             <div class="clear">
+                                <p><%= @sight_of_the_day.title %></p>
                                 <%= raw truncate_html(@sight_of_the_day.content, :length => 1000) %>
                             </div>
                             <p class='link-top'>
