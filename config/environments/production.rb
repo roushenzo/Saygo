@@ -58,4 +58,6 @@ Saygo::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+  config.assets.css_compressor = :yui
+  config.assets.js_compressor = :uglifier
 end
