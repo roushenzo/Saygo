@@ -1,5 +1,5 @@
 require 'bundler/capistrano'
-set :default_environment, { "PATH" => "/home/ubuntu/.rbenv/shims:/home/ubuntu/.rbenv/bin:$PATH", "RBENV_VERSION" => "1.9.2-p290" }
+set :default_environment, { "PATH" => "/home/ubuntu/.rbenv/shims:/home/ubuntu/.rbenv/bin:$PATH", "RBENV_VERSION" => "1.8.7-p352" }
 set :application, "saygo"
 set :deploy_to, "/home/ubuntu/saygo"
 set :rails_env, 'production'
