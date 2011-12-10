@@ -14,7 +14,22 @@ class Page < ActiveRecord::Base
     where(:sight_of_the_day => true).last || first
   end
 
+  def content
+    read_attribute(:content).present? ? read_attribute(:content) : default_value_for_content
+  end
+
   private
+  def default_value_for_content
+    %Q{
+      <div class="clear img-bottom">
+        <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Ko_Mak.jpg/250px-Ko_Mak.jpg" alt="Новый рисунок должен быть здесь"
+          class="img-indent"></img>
+          Писать текст сюда, а слева - рисунок. Достаточно просто перетащить его с рабочего стола ужерживаю клавишу SHIFT.
+          Текущий рисунок можно удалить
+      </div>Описание<p class="indent-top-bottom">Описание</p>Описание
+    }
+  end
+
   def reset_sights_of_the_day
     self.class.update_all "sight_of_the_day = 0", ["id <> ? AND sight_of_the_day = 1", self.id]
   end
