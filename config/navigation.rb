@@ -3,7 +3,7 @@ SimpleNavigation::Configuration.run do |navigation|
   navigation.items do |primary|
     primary.item :countries, 'Страны', root_path, :highlight_on => //
     Category.for_main_menu.each do |c|
-      primary.item "category#{c.id}", c.name, category_path(c), :highlight_on => /category/
+      primary.item "category#{c.id}", c.name, search_path(:category_id => c.id), :highlight_on => /category/
     end
     primary.dom_class = 'top-menu list0'
   end

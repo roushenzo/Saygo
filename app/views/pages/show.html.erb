@@ -9,6 +9,6 @@
 <% if current_admin_user %>
     <%= link_to "Edit Page", "/editor#{page_path(@page)}", :id => "edit_link", :data => {:save_url => mercury_update_admin_page_path(@page)} %>
 <% end %>
-<%= link_to categories_path, :class => 'text-button button-width1 text-button-indent' do %>
+<%= link_to search_path(:country_id => @country.try(:id), :city_id => @city.try(:id)), :class => 'text-button button-width1 text-button-indent' do %>
     <span><span>Посмотреть все достопримечательности</span></span>
 <% end %>

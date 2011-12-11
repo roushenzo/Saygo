@@ -1,15 +1,16 @@
 Saygo::Application.routes.draw do
-  resources :countries, :controller => 'pages' do
-    resources :cities, :controller => 'pages' do
-      resources :categories, :controller => 'pages'
+  resources :countries, :controller => 'pages', :only => [:show] do
+    resources :cities, :controller => 'pages', :only => [:show] do
+      resources :categories, :controller => 'pages', :only => [:show] do
+        resources :pages, :only => [:show]
+      end
     end
   end
 
   Mercury::Engine.routes
 
-  resources :pages
-  resources :categories
-  resources :cities
+  resource :search, :only => [:show], :controller => 'search'
+  resources :pages, :only => [:show]
   ActiveAdmin.routes(self)
   devise_for :admin_users, ActiveAdmin::Devise.config
   root :to => 'countries#index'
