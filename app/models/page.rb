@@ -22,7 +22,7 @@ class Page < ActiveRecord::Base
   def default_value_for_content
     %Q{
       <div class="clear img-bottom">
-        <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Ko_Mak.jpg/250px-Ko_Mak.jpg" alt="Новый рисунок должен быть здесь"
+        <img src="/assets/blank.jpg" alt="Новый рисунок должен быть здесь"
           class="img-indent"></img>
           Писать текст сюда, а слева - рисунок. Достаточно просто перетащить его с рабочего стола ужерживаю клавишу SHIFT.
           Текущий рисунок можно удалить
