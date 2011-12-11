@@ -20,7 +20,7 @@ ActiveAdmin.register Page do
 
   form do |f|
     f.inputs "General info" do
-      f.input :url, :as => :url
+      f.input :url
       f.input :title
       f.input :country, :as => :select
       f.input :city, :as => :select
