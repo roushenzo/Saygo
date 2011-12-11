@@ -29,6 +29,7 @@ group :test, :development do
   gem 'fabrication'
   gem 'faker'
   gem 'mocha'
+  gem 'guard-rails-assets'
 end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
