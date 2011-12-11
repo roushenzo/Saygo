@@ -23,6 +23,7 @@ gem 'rmagick'
 gem 'simple-navigation'
 gem 'truncate_html'
 gem 'capistrano'
+gem "friendly_id", "~> 4.0.0.beta14"
 
 group :test, :development do
   gem "rspec-rails", "~> 2.6"

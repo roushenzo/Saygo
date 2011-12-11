@@ -4,7 +4,7 @@ module CountriesHelper
     uls << "<ul class='list-language right-indent-none fleft'>"
     countries.in_groups_of(5, false).each do |group|
       group.each_with_index do |country, index|
-        uls[index] += content_tag(:li, link_to(country.name, country, :style => "background: url(#{country.flag.url}) 0 6px no-repeat;"))
+        uls[index] += content_tag(:li, link_to(country.name, search_path(:country_id => country.slug), :style => "background: url(#{country.flag.url}) 0 6px no-repeat;"))
       end
     end
     uls.each_with_index do |ul, index|
@@ -23,7 +23,7 @@ module CountriesHelper
       index = i + 1
       cl = index <= 3 ? "bg#{index}" : ""
       lis << content_tag(:li, content_tag(:span, index, :class => cl) +
-                                link_to(c.name, c, :style => "background: url(#{c.flag.url}) 0 6px no-repeat;")).html_safe
+                                link_to(c.name, search_path(:country_id => c.slug), :style => "background: url(#{c.flag.url}) 0 6px no-repeat;")).html_safe
     end
     content_tag(:ul, lis.join.html_safe, :class => 'list-top-10').html_safe
   end

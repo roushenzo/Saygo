@@ -1,4 +1,7 @@
 class Page < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :translit_title, :use => :slugged
+
   has_many :photos
   belongs_to :category
   belongs_to :country
@@ -32,5 +35,9 @@ class Page < ActiveRecord::Base
 
   def reset_sights_of_the_day
     self.class.update_all "sight_of_the_day = 0", ["id <> ? AND sight_of_the_day = 1", self.id]
+  end
+
+  def translit_title
+    Russian.translit(title || '')
   end
 end
