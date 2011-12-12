@@ -24,12 +24,11 @@ class Page < ActiveRecord::Base
   private
   def default_value_for_content
     %Q{
-      <div class="clear img-bottom">
-        <img src="/assets/blank.jpg" alt="Новый рисунок должен быть здесь"
-          class="img-indent"></img>
-          Писать текст сюда, а слева - рисунок. Достаточно просто перетащить его с рабочего стола ужерживаю клавишу SHIFT.
-          Текущий рисунок можно удалить
-      </div>Описание<p class="indent-top-bottom">Описание</p>Описание
+      <div class="clear img-bottom">\n
+        <img src="/assets/blank.jpg" class="img-indent"></img>\n
+          Писать текст сюда, а слева - рисунок. Достаточно просто перетащить его с рабочего стола ужерживаю клавишу SHIFT.\n
+          Текущий рисунок можно удалить\n
+      </div>Описание<p class="indent-top-bottom">Описание</p>Описание\n
     }
   end
 
