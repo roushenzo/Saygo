@@ -1,4 +1,4 @@
 Fabricator(:city) do
-  name "MyString"
-  country_id 1
+  name {Faker::Name.name}
+  country!
 end

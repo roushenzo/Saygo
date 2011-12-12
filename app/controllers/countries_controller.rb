@@ -8,4 +8,5 @@ class CountriesController < InheritedResources::Base
     @page = Page.new
     @search_categories = Category.where(:show_in_the_search_bar => true)
   end
+
 end

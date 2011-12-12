@@ -5,6 +5,7 @@ Saygo::Application.routes.draw do
         resources :pages, :only => [:show]
       end
     end
+    resources :cities, :only => [:index]
   end
 
   Mercury::Engine.routes
