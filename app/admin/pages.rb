@@ -43,10 +43,11 @@ ActiveAdmin.register Page do
   end
 
   member_action :mercury_update, :method => :put do
-    @page = Page.find_by_title(params[:id]) || Page.find_by_id(params[:id])
+    @page = Page.find(params[:id])
     @page.content = params[:content][:page_content][:value]
     @page.title = params[:content][:page_title][:value]
     @page.save!
+    flash[:notice] = 'Page was updated successfully.'
     render :text => ''
   end
 end
