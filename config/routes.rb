@@ -1,15 +1,4 @@
 Saygo::Application.routes.draw do
-  # resources :countries, :controller => 'pages', :only => [:show] do
-  #   resources :cities, :controller => 'pages', :only => [:show] do
-  #     resources :categories, :controller => 'pages', :only => [:show] do
-  #       resources :pages, :only => [:show]
-  #     end
-  #   end
-  #   resources :cities, :only => [:index]
-  # end
-  match 'countries/:country_id/cities', :to => 'cities#index', :as => :country_cities, :via => :get
-  match ':country_id(/:city_id(/:category_id(/:id)))', :to => 'pages#show', :as => :page, :via => :get
-
   Mercury::Engine.routes
 
   resource :search, :only => [:show], :controller => 'search'
@@ -17,6 +6,8 @@ Saygo::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   root :to => 'countries#index'
 
+  match 'countries/:country_id/cities', :to => 'cities#index', :as => :country_cities, :via => :get
+  match ':country_id(/:city_id(/:category_id(/:id)))', :to => 'pages#show', :as => :page, :via => :get
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
