@@ -6,7 +6,7 @@ class CountriesController < InheritedResources::Base
     @countries = Country.all
     @top_countries = Country.limit(10) # TODO: use rating for countries in the future
     @page = Page.new
-    @search_categories = Category.where(:show_in_the_search_bar => true)
+    @search_categories = Category.for_search_bar
   end
 
 end

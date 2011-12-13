@@ -32,7 +32,7 @@
                             </div>
                             <p class='link-top'>
                                 <%= link_to 'Подробнее',
-                                        [@sight_of_the_day.country, @sight_of_the_day.city, @sight_of_the_day.category, @sight_of_the_day], :class => 'link' %>
+                                        page_path(@sight_of_the_day.country, @sight_of_the_day.city, @sight_of_the_day.category, @sight_of_the_day), :class => 'link' %>
                             </p>
                         <% end %>
                     </div>
