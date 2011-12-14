@@ -53,6 +53,16 @@ class Page < ActiveRecord::Base
     country.present? && !city.present? && !category.present?
   end
 
+  def description_types
+    if country?
+      country.description_types
+    elsif city? || category?
+      city.description_types
+    else
+      []
+    end
+  end
+
   private
   def default_image_tag
     %Q{<img src="/assets/blank.jpg" class="img-indent"></img>}
