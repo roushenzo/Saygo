@@ -9,36 +9,9 @@
 </head>
 <body>
     <div class="main">
-        <div class="header clear">
-            <h1>
-                <%= link_to root_path, :class => 'logo txt', :title => 'Saygo' do %>
-                    <span class="slogan txt">Мир путешествий</span>
-                <% end %>
-            </h1>
-        </div>
-        <div class='clear'><%= render_navigation %></div>
-        <div class="coontent content-indent1">
-            <!--row-box3-->
-            <div class="row-box3">
-                <div class="clear">
-                    <!--right-->
-                    <div class="col-right fright">
-                        <%= yield %>
-                    </div>
-                    <!--left-->
-                    <div class="col-left fleft">
-                        <%= yield :side_bar %>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="footer">
-            <div class="fright banner-footer">
-                <a href="#"><img src="/assets/banner1.gif" alt="" /></a>
-                <a href="#"><img src="/assets/banner2.gif" alt="" /></a>
-            </div>
-            <p class="fleft">Coopyright SayGO 2011 . Все права защищены</p>
-        </div>
+        <%= render 'header' %>
+        <%= yield %>
+        <%= render 'footer' %>
     </div>
 </body>
 </html>

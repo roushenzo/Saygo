@@ -6,7 +6,6 @@ ActiveAdmin.register Page do
   index do
     column :id
     column :title
-    column :url
     column :country
     column :city
     column :category
@@ -20,7 +19,6 @@ ActiveAdmin.register Page do
 
   form do |f|
     f.inputs "General info" do
-      f.input :url
       f.input :title
       f.input :country, :as => :select
       f.input :city, :as => :select
@@ -29,6 +27,7 @@ ActiveAdmin.register Page do
 
     f.inputs 'Boolean flags' do
       f.input :sight_of_the_day
+      f.input :description_type
     end
 
     f.inputs :meta_title, :meta_keys, :meta_description, :name => "Meta tags"

@@ -24,8 +24,11 @@ gem 'simple-navigation'
 gem 'truncate_html'
 gem 'capistrano'
 gem "friendly_id", "~> 4.0.0.beta14"
+gem 'kaminari'
+gem 'nokogiri'
 
 group :test, :development do
+  gem 'rails-dev-tweaks', '~> 0.5.2'
   gem "rspec-rails", "~> 2.6"
   gem 'fabrication'
   gem 'faker'

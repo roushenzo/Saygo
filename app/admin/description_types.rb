@@ -1,8 +1,7 @@
-ActiveAdmin.register Category do
+ActiveAdmin.register DescriptionType do
   form do |f|
     f.inputs do
       f.input :name
-      f.input :show_in_the_search_bar
     end
     f.buttons
   end

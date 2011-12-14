@@ -48,14 +48,6 @@ input{font-family:Arial, Helvetica, sans-serif;}
 .list-language li a{ display:block; padding:7px 0 8px 33px; color:#29a9cb; font-size:12px; text-decoration:none;}
 .list-language li a:hover{ color:#0f6aab;}
 
-.list-language .bg1{ background:url(/assets/list_lang_img1.gif) 0 6px no-repeat;}
-.list-language .bg2{ background:url(/assets/list_lang_img2.gif) 0 6px no-repeat;}
-.list-language .bg3{ background:url(/assets/list_lang_img3.gif) 0 6px no-repeat;}
-.list-language .bg4{ background:url(/assets/list_lang_img4.gif) 0 6px no-repeat;}
-.list-language .bg5{ background:url(/assets/list_lang_img5.gif) 0 6px no-repeat;}
-.list-language .bg6{ background:url(/assets/list_lang_img6.gif) 0 6px no-repeat;}
-/**/
-
 /*********************************content*************************************/
 .content-indent{ padding:20px 23px 53px 20px;}
 .content-indent1{ padding:25px 23px 53px 20px;}
@@ -352,7 +344,7 @@ h4 span{ display:block; color:#858585; font-size:14px;}
 .row-pages li{ margin-right:3px;}
 .row-pages li a img{ margin:6px 0 6px 0;}
 .row-pages li a{ background:#FFF; border:1px solid #daf2f6; width:17px; text-align:center; color:#29a9cb; font-size:12px; text-decoration:none;}
-.row-pages li a:hover{ background:url(/assets/page_bg.gif) 0 0 repeat-x; border:1px solid #2771aa; color:#FFF;}
+.row-pages li a:hover, .row-pages li a.current{ background:url(/assets/page_bg.gif) 0 0 repeat-x; border:1px solid #2771aa; color:#FFF;}
 /**/
 
 /****************************footer*******************************************/
