@@ -1,5 +1,5 @@
 class Page < ActiveRecord::Base
-  paginates_per 1 #TODO: change to real value
+  paginates_per 20
   extend FriendlyId
   friendly_id :translit_title, :use => :slugged
 
@@ -39,6 +39,18 @@ class Page < ActiveRecord::Base
     end
     search_query << pages[:title].matches("%#{title}%")
     Page.where(*search_query).page(params[:page])
+  end
+
+  def category?
+    country.present? && city.present? && category.present?
+  end
+
+  def city?
+    country.present? && city.present? && !category.present?
+  end
+
+  def country?
+    country.present? && !city.present? && !category.present?
   end
 
   private
