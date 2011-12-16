@@ -32,12 +32,12 @@ module PagesHelper
 
   def breadcrumbs
     items = []
-    items << link_to_if(@country, @country.name, page_path(@country))
-    items << link_to_if(@city, @city.try(:name), page_path(@country, @city))
-    items << link_to_if(@category, @category.try(:name), page_path(@country, @city, @category))
-    items << link_to_if(@description_type, @description_type.try(:name),
-                          page_path(@country, @city, :description_type_id => @description_type.try(:slug)))
-    items << link_to_if(@page, @page.title, page_path(@country, @city, @category, :id => @page.try(:slug)))
+    items << link_to(@country.name, page_path(@country)) if @country
+    items << link_to(@city.name, page_path(@country, @city)) if @city
+    items << link_to(@category.name, page_path(@country, @city, @category)) if @category
+    items << link_to(@description_type.name,
+      page_path(@country, @city, @category, :description_type_id => @description_type.slug)) if @description_type
+    items << link_to(@page.title, @page.url) if @page
     items.compact!
     items.last.gsub!('<a', '<span').gsub!('</a', '</span') if items.last
     content_tag(:div, items.join('<span>&nbsp;/&nbsp;</span>').html_safe, :class => 'clear').html_safe

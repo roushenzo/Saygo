@@ -12,7 +12,7 @@ ActiveAdmin.register Page do
     column :created_at
     column :updated_at
     column I18n.t('active_admin.content')  do |page|
-       link_to(I18n.t('active_admin.edit'), '/editor' + page_path(page), :class => "member_link edit_link")
+       link_to(I18n.t('active_admin.edit'), '/editor' + page_path(page.country, page.city, page.category, page.slug), :class => "member_link edit_link")
     end
     default_actions
   end

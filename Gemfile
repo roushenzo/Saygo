@@ -26,6 +26,7 @@ gem 'capistrano'
 gem "friendly_id", "~> 4.0.0.beta14"
 gem 'kaminari'
 gem 'nokogiri'
+gem 'acts_as_commentable'
 
 group :test, :development do
   gem 'rails-dev-tweaks', '~> 0.5.2'

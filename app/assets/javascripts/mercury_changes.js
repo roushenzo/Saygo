@@ -5,5 +5,5 @@ $(window).bind('mercury:ready', function() {
 });
 
 $(window).bind('mercury:saved', function() {
-  window.location = window.location.href.replace(/\/editor\//i, '/admin/');
+  window.location = '/admin/pages';
 });

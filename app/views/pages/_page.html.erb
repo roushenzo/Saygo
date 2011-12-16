@@ -4,13 +4,16 @@
     </div>
     <div class="col-2 fleft">
         <h5><%= page.title %></h5>
-        <p class="text">Остров Аруба заселен с 1000 г. и имеет богатую историю и культуру. Игл-Бич представляет собой идиллический пляж Карибского моря: белый песок, бирюзового цвета вода – именно поэтому он так любим многочисленными поклонниками водных видов спорта. Палм-Бич, расположенный на западной части острова, порадует вас отличными условиями для купания...</p>
+        <p class="text">
+            <%= raw truncate_html(page.countent_without_images, :length => 500) %>
+        </p>
         <div class="row-star clear">
             <div class="star-left fleft"><span class="img-star"><a href="#"></a><a href="#"></a><a href="#"></a><a href="#"></a><a href="#"></a></span></div>
-            <div class="star-right fleft">|&nbsp;  25.10.2011</div>
+            <div class="star-right fleft">|&nbsp;  <%= page.updated_at.strftime("%d.%m.%Y") %></div>
         </div>
         <p class="link-top">
-            <a href="#" class="link">Подробнее</a><a href="#" class="link link-left">Отзывы (23)</a>
+            <%= link_to 'Подробнее', page.url, :class => 'link' %>
+            <%= link_to "Отзывы (#{page.comments.count})",page.url, :class => 'link link-left' %>
         </p>
     </div>
 </div>

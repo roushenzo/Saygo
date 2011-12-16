@@ -1,5 +1,6 @@
 class Page < ActiveRecord::Base
   paginates_per 20
+  acts_as_commentable
   extend FriendlyId
   friendly_id :translit_title, :use => :slugged
 
@@ -51,6 +52,20 @@ class Page < ActiveRecord::Base
 
   def country?
     country.present? && !city.present? && !category.present?
+  end
+
+  def url
+    {:controller => 'pages',
+     :action => 'show',
+     :id => slug,
+     :country_id => country.try(:slug),
+     :city_id => city.try(:slug),
+     :category_id => category.try(:slug),
+     :description_type_id => description_type.try(:slug)}
+  end
+
+  def countent_without_images
+    content.gsub(/<img\b[^>]*(\/?)>/, '')
   end
 
   def description_types
