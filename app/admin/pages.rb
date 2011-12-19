@@ -1,6 +1,6 @@
 ActiveAdmin.register Page do
   show do
-    render :template => 'pages/show'
+    attributes_table :title, :country, :city, :category, :description_type, :meta_title, :meta_keys, :meta_description, :created_at, :updated_at
   end
 
   index do
