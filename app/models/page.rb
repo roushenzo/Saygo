@@ -32,10 +32,11 @@ class Page < ActiveRecord::Base
   def search(params)
     pages = Page.arel_table
     search_query = []
-    %w(category country city description_type).each do |item|
+    %w(category description_type country city).each do |item|
       if (param = params["#{item}_id".to_sym]).present?
-        self.send("#{item}=", item.classify.constantize.find(param))if param.present?
-        search_query << pages["#{item}_id"].eq(self.send("#{item}_id")) unless item == 'title'
+        instance = item.classify.constantize.find(param)
+        self.send("#{item}=", instance)
+        search_query << pages["#{item}_id"].eq(instance.id)
       end
     end
     search_query << pages[:title].matches("%#{title}%")
