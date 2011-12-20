@@ -1,6 +1,6 @@
 class PagesController < InheritedResources::Base
   def show
-    page = Page.new(:title => params[:id])
+    page = Page.new
     @page = page.search(params).first
     @country = page.country
     @city = page.city

@@ -39,6 +39,7 @@ class Page < ActiveRecord::Base
         search_query << pages["#{item}_id"].eq(instance.id)
       end
     end
+    search_query << pages[:slug].eq(params[:id]) if params[:id].present?
     search_query << pages[:title].matches("%#{title}%")
     Page.where(*search_query).page(params[:page])
   end
