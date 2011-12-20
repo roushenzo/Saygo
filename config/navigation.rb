@@ -2,7 +2,7 @@ SimpleNavigation::Configuration.run do |navigation|
   navigation.selected_class = 'active'
   navigation.items do |primary|
     primary.item :countries, 'Страны', root_path, :highlight_on => //
-    if @page
+    if @page && !(request.path =~ /search/)
         primary.item :cities, 'Города', page_path(@country) if @country
         @page.description_types.each do |t|
           primary.item "categoty-#{t.slug}", t.name,

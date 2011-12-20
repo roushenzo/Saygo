@@ -41,7 +41,7 @@ class Page < ActiveRecord::Base
     end
     search_query << pages[:slug].eq(params[:id]) if params[:id].present?
     search_query << pages[:title].matches("%#{title}%")
-    Page.where(*search_query).page(params[:page])
+    search_query.inject(Page.scoped) { |res, arel_query| res.where(arel_query) }.page(params[:page])
   end
 
   def category?
