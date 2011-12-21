@@ -3,7 +3,7 @@ class Country < ActiveRecord::Base
   friendly_id :translit_name, :use => :slugged
 
   default_scope order('name')
-  has_many :pages
+  has_many :pages, :conditions => {:city_id => nil, :category_id => nil}
   has_many :description_types, :through => :pages, :uniq => true
   has_many :categories, :through => :pages, :uniq => true
   has_many :cities

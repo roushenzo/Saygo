@@ -14,8 +14,10 @@ module PagesHelper
     items = []
     cs = (page.city && page.city.categories) || []
     cs.each do |item|
-      items << content_tag(:li, link_to(item.name, page_path(@country, @city, item)),
-                           :class => ('active' if (@category == item))).html_safe
+      if p = Page.search(:country_id => @country.try(:slug), :city_id => @city.try(:slug), :category_id => item.try(:slug)).first
+        items << content_tag(:li, link_to(p.title, page_path(@country, @city, item)),
+        :class => ('active' if (@category == item))).html_safe
+      end
     end
     items.join.html_safe
   end

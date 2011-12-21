@@ -44,6 +44,10 @@ class Page < ActiveRecord::Base
     search_query.inject(Page.scoped) { |res, arel_query| res.where(arel_query) }.page(params[:page])
   end
 
+  def self.search(params)
+    self.new.search(params)
+  end
+
   def category?
     country.present? && city.present? && category.present?
   end

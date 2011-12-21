@@ -9,6 +9,7 @@ ActiveAdmin.register Page do
     column :country
     column :city
     column :category
+    column :description_type
     column :created_at
     column :updated_at
     column I18n.t('active_admin.content')  do |page|
