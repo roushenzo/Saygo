@@ -12,20 +12,10 @@ module PagesHelper
 
   def menu_items_for_page(page)
     items = []
-    is_ds = true
-    cs =  if page.country?
-      page.country.description_types
-    elsif page.city?
-      page.city.description_types
-    else
-      is_ds = false
-      page.city.categories
-    end
+    cs = (page.city && page.city.categories) || []
     cs.each do |item|
-      params = is_ds ? {:description_type_id => item.slug} : {:category_id => item.slug}
-      items << content_tag(:li,
-                           link_to(item.name, page_path(@country, @city, params)),
-                           :class => ('active' if (is_ds && @description_type == item ) || (!is_ds && @category == item))).html_safe
+      items << content_tag(:li, link_to(item.name, page_path(@country, @city, item)),
+                           :class => ('active' if (@category == item))).html_safe
     end
     items.join.html_safe
   end
