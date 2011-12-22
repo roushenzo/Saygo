@@ -37,6 +37,8 @@ class Page < ActiveRecord::Base
         instance = item.classify.constantize.find(param)
         self.send("#{item}=", instance)
         search_query << pages["#{item}_id"].eq(instance.id)
+      elsif params[:force]
+        search_query << pages["#{item}_id"].eq(nil) if item != 'description_type'
       end
     end
     search_query << pages[:slug].eq(params[:id]) if params[:id].present?
