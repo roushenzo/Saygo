@@ -3,6 +3,14 @@ ActiveAdmin.register Page do
     attributes_table :title, :country, :city, :category, :description_type, :meta_title, :meta_keys, :meta_description, :created_at, :updated_at
   end
 
+  filter :country
+  filter :city
+  filter :category
+  filter :description_type
+  filter :title
+  filter :created_at
+  filter :updated_at
+
   index do
     column :id
     column :title

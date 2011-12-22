@@ -1,5 +1,5 @@
 <% if params[:param_as_id] %>
-    <%= "<option>Выберите город</option>".html_safe + options_from_collection_for_select(@cities, :id, :name).html_safe %>
+    <%= "<option value>Выберите город</option>".html_safe + options_from_collection_for_select(@cities, :id, :name).html_safe %>
 <% else %>
-    <%= "<option>Выберите город</option>".html_safe + options_from_collection_for_select(@cities, :slug, :name).html_safe %>
+    <%= "<option value>Выберите город</option>".html_safe + options_from_collection_for_select(@cities, :slug, :name).html_safe %>
 <% end %>
