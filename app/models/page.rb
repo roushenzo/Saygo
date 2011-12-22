@@ -10,8 +10,8 @@ class Page < ActiveRecord::Base
   belongs_to :city
   belongs_to :description_type
   accepts_nested_attributes_for :photos
-  validates :country, :associated => true, :if => Proc.new {|p| p.city.present?}
-  validates :city, :associated => true, :if => Proc.new {|p| p.category.present?}
+  validates :country_id, :presence => true
+  validates :city_id, :presence => true, :if => proc {|p| p.category.present? }
   validates :title, :presence => true
   validates_uniqueness_of :title, :scope => [:country_id, :city_id, :category_id, :description_type_id]
   after_save :reset_sights_of_the_day, :if => "sight_of_the_day? && sight_of_the_day_changed?"

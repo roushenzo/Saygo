@@ -4,5 +4,6 @@ $(document).ready ->
     if c is ''
       $('select[name*="city_id"]').html("<option>Выберите город</option>")
     else
-      $.get "/countries/#{$(this).val()}/cities", (data) ->
+      params = if window.location.pathname.indexOf('/admin') is 0 then {param_as_id : true} else {}
+      $.get "/countries/#{$(this).val()}/cities", params, (data) ->
         $('select[name*="city_id"]').html(data)
