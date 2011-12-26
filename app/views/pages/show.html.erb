@@ -1,40 +1,5 @@
-<div class="coontent content-indent1">
-    <%= breadcrumbs %>
-    <% if @page.country? && @country %>
-        <%= list_cities(@country.cities) %>
-    <% end %>
-    <div class="row-box3">
-        <div class="clear">
-            <div class="col-right fright">
-                <h3>
-                    <div id="page_title" class="mercury-region clear" data-type="editable">
-                        <%= @page.title %>
-                    </div>
-                </h3>
-                <div id="page_content" class="mercury-region clear" data-type="editable">
-                    <%= raw @page.content %>
-                </div>
-                <% if current_admin_user %>
-                <%= link_to "Edit Page", "/editor#{page_path(@page)}", :id => "edit_link", :data => {:save_url => mercury_update_admin_page_path(@page)} %>
-                <% end %>
-                <%= link_to search_path(:country_id => @page.country.try(:slug),
-                                        :city_id => @page.city.try(:slug),
-                                        :category_id => @page.category.try(:slug)),
-                            :class => 'text-button button-width1 text-button-indent' do %>
-                    <span><span>Посмотреть все достопримечательности</span></span>
-                <% end %>
-            </div>
-            <div class="col-left fleft">
-                <%= side_bar_for_page(@page) %>
-                <!-- TODO: interesting facts -->
-                <!-- <h3 class="title-top title-bottom2">Интересные факты</h3>
-                                <ul class="list3">
-                                    <li><a href="#">Остров Аруба заселен с 1000 г. и имеет богатую...</a></li>
-                                    <li><a href="#">Игл-Бич представляет собой идилли ческий пляж Карибского...</a></li>
-                                    <li><a href="#">Остров Аруба заселен с 1000 г. и имеет богатую...</a></li>
-                                    <li><a href="#">Игл-Бич представляет собой идилли ческий пляж Карибского...</a></li>
-                                </ul> -->
-            </div>
-        </div>
-    </div>
-</div>
+<% if @page.category? %>
+    <%= render 'category_page' %>
+<% else %>
+    <%= render 'description_page' %>
+<% end %>

@@ -6,5 +6,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.fancybox
+//= require jquery.carousel
 //= require countries
 //= require cities
+//= require pages

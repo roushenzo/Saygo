@@ -1,0 +1,30 @@
+<div class="coontent content-indent1">
+    <%= breadcrumbs %>
+    <% if @page.country? && @country %>
+        <%= list_cities(@country.cities) %>
+    <% end %>
+    <div class="row-box3">
+        <div class="clear">
+            <div class="col-right fright">
+                <h3>
+                    <%= @page.title %>
+                </h3>
+                <div id="page_content" class="mercury-region clear" data-type="editable">
+                    <%= raw @page.content %>
+                </div>
+                <% if current_admin_user %>
+                <%= link_to "Edit Page", "/editor#{page_path(@page)}", :id => "edit_link", :data => {:save_url => mercury_update_admin_page_path(@page)} %>
+                <% end %>
+                <%= link_to search_path(:country_id => @page.country.try(:slug),
+                                        :city_id => @page.city.try(:slug),
+                                        :category_id => @page.category.try(:slug)),
+                            :class => 'text-button button-width1 text-button-indent' do %>
+                    <span><span>Посмотреть все достопримечательности</span></span>
+                <% end %>
+            </div>
+            <div class="col-left fleft">
+                <%= side_bar_for_page(@page) %>
+            </div>
+        </div>
+    </div>
+</div>
