@@ -40,11 +40,19 @@ ActiveAdmin.register Page do
     end
 
     f.inputs :meta_title, :meta_keys, :meta_description, :name => "Meta tags"
+    f.inputs do
+      f.has_many :info_blocks do |fb|
+        fb.input :title
+        fb.input :content
+      end
+    end
 
-    f.has_many :photos do |fi|
-      fi.input :file_cache, :as => :hidden
-      fi.input :file, :as => :file
-      fi.input :remote_file_url, :as => :url
+    f.inputs do
+      f.has_many :photos do |fi|
+        fi.input :file_cache, :as => :hidden
+        fi.input :file, :as => :file
+        fi.input :remote_file_url, :as => :url
+      end
     end
 
     f.buttons

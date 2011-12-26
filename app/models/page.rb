@@ -5,11 +5,13 @@ class Page < ActiveRecord::Base
   friendly_id :translit_title, :use => :slugged
 
   has_many :photos
+  has_many :info_blocks
   belongs_to :category
   belongs_to :country
   belongs_to :city
   belongs_to :description_type
   accepts_nested_attributes_for :photos
+  accepts_nested_attributes_for :info_blocks
   validates :country_id, :presence => true
   validates :city_id, :presence => true, :if => proc {|p| p.category.present? }
   validates :title, :presence => true
