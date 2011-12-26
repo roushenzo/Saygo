@@ -18,8 +18,13 @@
                     <% end %>
                 </div>
                 <p class="indent-top1">
-                    <%= raw @page.content %>
+                    <div id="page_content" class="mercury-region clear" data-type="editable">
+                        <%= raw @page.content %>
+                    </div>
                 </p>
+                <% if current_admin_user %>
+                    <%= link_to "Edit Page", "/editor#{url_for(@page.url)}", :id => "edit_link", :data => {:save_url => mercury_update_admin_page_path(@page)} %>
+                <% end %>
                 <% if @page.photos.present? %>
                     <h3 class="title-text title-text-top">Галерея</h3>
                     <!--slider-->
