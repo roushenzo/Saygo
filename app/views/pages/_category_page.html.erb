@@ -6,10 +6,10 @@
                 <h3 class="title-star title-bottom">
                     <em><%= @page.title %></em>
                     <em class="star-link">
-                        <span><a></a><a></a><a></a></span><a></a><a></a>
+                        <span><a></a><a></a><a></a><a></a><a></a></span>
                     </em>
                 </h3>
-                <!-- TODO: real data <div class="text-box clear">
+                <div class="text-box clear">
                                     <div class="col-1 fleft">
                                         <h4 class="marker1">Стоимость билета:</h4>
                                         <div class="text-indent">Взрослый: 200 THB <p>Детский: 100 THB</p></div>
@@ -22,7 +22,7 @@
                                         <h4 class="marker3">Расположение:</h4>
                                         <div class="text-indent">2/2 Moo 2, Viset Rd. Tambon Rawai, <p>A. Muang, Phuket 83130 </p></div>
                                     </div>
-                                </div> -->
+                                </div>
                 <p class="indent-top1">
                     <%= raw @page.content %>
                 </p>
@@ -43,6 +43,25 @@
                         </ul>
                     </div>
                 <% end %>
+            </div>
+            <div class="col-left fleft">
+                               <h3 class="title-bottom1"><strong>Топ 10 </strong> <span>достопримечательностей</span></h3>
+                               <!-- TODO: top 10 objects <ul class="list1-top-10">
+                                                           <li><span class="bg1">1</span><a href="#">Национальный парк Khao Sok</a></li>
+                                                           <li><span class="bg2">2</span><a href="#">Деревня Khao lak</a></li>
+                                                           <li><span class="bg3">3</span><a href="#">Зооппарк Пхукета </a></li>
+                                                           <li><span>4</span><a href="#">Музей морских раковин</a></li>
+                                                           <li><span>5</span><a href="#">Океанариум Пхукета</a></li>
+                                                           <li><span>6</span><a href="#">Рафтинг на Пхукете</a></li>
+                                                           <li><span>7</span><a href="#">Сад орхидей Пхукета</a></li>
+                                                           <li><span>8</span><a href="#">Сафари на ATV</a></li>
+                                                           <li><span>9</span><a href="#">Сафари на слонах</a></li>
+                                                           <li><span>10</span><a href="#">Сад бабочек</a></li>
+                                                       </ul> -->
+                               <%= link_to page_path(@country, @city), :class => 'text-button button-width2 text-button-indent1' do %>
+                                   <span><span>Все достопримечательности</span></span>
+                               <% end %>
+            </div>
         </div>
     </div>
 </div>
