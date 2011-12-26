@@ -68,7 +68,7 @@ h3 span{ display:block; font-size:20px; line-height:0.8em; padding:0 0 6px 0;}
 .title-top{ margin-top:35px;}
 h4{ color:#0f6aab; font-size:18px; font-weight:normal; line-height:1.2em; padding-top:1px; margin-bottom:9px;}
 h4 span{ display:block; color:#858585; font-size:14px;}
-.img-indent{ float:left; margin:0 19px 0 0;}
+.img-bottom img { float:left; margin:0 19px 0 0;}
 .text1{ line-height:18px;}
 
 .link-top0{ padding-top:8px;}
