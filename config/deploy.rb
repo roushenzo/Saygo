@@ -1,31 +1,18 @@
 require 'bundler/capistrano'
-set :default_environment, { "PATH" => "/home/ubuntu/.rbenv/shims:/home/ubuntu/.rbenv/bin:$PATH", "RBENV_VERSION" => "1.8.7-p352" }
+set :default_environment, { "PATH" => "/var/lib/gems/1.9.1/bin:$PATH" }
 set :application, "saygo"
 set :deploy_to, "/home/ubuntu/saygo"
 set :rails_env, 'production'
 set :branch, 'master'
-server 'dev.saygo.ru', :web, :app, :db, :primary => true
+server 'test.saygo.ru', :web, :app, :db, :primary => true
 set :normalize_asset_timestamps, false
+set :port, 42222
 
 set :use_sudo, false
 set :user, "ubuntu"
 set :scm, :git
-set :repository, "ubuntu@dev.saygo.ru:/home/ubuntu/saygo.git"
+set :repository, "git://github.com/ka8725/Saygo.git"
 set :deploy_via, :checkout
-set :unicorn_conf, "#{deploy_to}/current/config/unicorn.rb"
-set :unicorn_pid, "#{deploy_to}/shared/pids/unicorn.pid"
-
-# namespace :deploy do
-#   task :restart do
-#     run "if [ -f #{unicorn_pid} ] && [ -e /proc/$(cat #{unicorn_pid}) ]; then kill -USR2 `cat #{unicorn_pid}`; else cd #{deploy_to}/current && bundle exec unicorn -c #{unicorn_conf} -E #{rails_env} -D; fi"
-#   end
-#   task :start do
-#     run "bundle exec unicorn -c #{unicorn_conf} -E #{rails_env} -D"
-#   end
-#   task :stop do
-#     run "if [ -f #{unicorn_pid} ] && [ -e /proc/$(cat #{unicorn_pid}) ]; then kill -QUIT `cat #{unicorn_pid}`; fi"
-#   end
-# end
 
 namespace :deploy do
   desc "Restart Application"
