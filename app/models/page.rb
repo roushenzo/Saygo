@@ -27,8 +27,8 @@ class Page < ActiveRecord::Base
     read_attribute(:content).present? ? read_attribute(:content) : default_value_for_content
   end
 
-  def image_tag
-    Nokogiri::HTML(content).css('img').first || default_image_tag
+  def featured_image_file
+    photos.first.try(:file) || photos.new.file
   end
 
   def search(params)
@@ -103,7 +103,7 @@ class Page < ActiveRecord::Base
   end
 
   def reset_sights_of_the_day
-    self.class.update_all "sight_of_the_day = 0", ["id <> ? AND sight_of_the_day = 1", self.id]
+    Page.update_all "sight_of_the_day = 0", ["id <> ? AND sight_of_the_day = 1", self.id]
   end
 
   def translit_title

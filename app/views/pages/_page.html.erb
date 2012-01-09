@@ -1,6 +1,6 @@
 <div class="clear col-img col-img-top">
     <div class="col-1 fleft">
-        <%= raw page.image_tag %>
+        <%= image_tag page.featured_image_file.url(:for_search) %>
     </div>
     <div class="col-2 fleft">
         <h5><%= page.title %></h5>

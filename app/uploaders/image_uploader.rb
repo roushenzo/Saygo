@@ -16,9 +16,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
-  # def default_url
-  #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
-  # end
+  def default_url
+    "/assets/blank.jpg"
+  end
 
   # Process files as they are uploaded:
   # process :scale => [200, 300]
@@ -29,6 +29,10 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   version :thumb do
     process :resize_to_fill => [130, 106]
+  end
+
+  version :for_search do
+    process :resize_to_fill => [170, 170]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
