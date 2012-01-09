@@ -327,7 +327,8 @@ h4 span{ display:block; color:#858585; font-size:14px;}
 .search-content1{ padding:30px 0 25px 0;}
 .col-img .col-1{ width:188px;}
 .col-img .col-2{ width:839px;}
-.col-img h5{ color:#0f6aab; font-size:18px; line-height:1.2em; padding:1px 0 11px 0; font-weight:normal;}
+.col-img h5 a {color:#0f6aab; font-size:18px; line-height:1.2em; padding:1px 0 11px 0; font-weight:normal; text-decoration: none;}
+.col-img h5 a:hover {text-decoration: underline;}
 .text{ line-height:18px;}
 
 .row-star{ padding:10px 0 5px 0;}

@@ -1,9 +1,11 @@
 <div class="clear col-img col-img-top">
     <div class="col-1 fleft">
-        <%= image_tag page.featured_image_file.url(:for_search) %>
+        <%= link_to page.url do %>
+            <%= image_tag(page.featured_image_file.url(:for_search)) %>
+        <% end %>
     </div>
     <div class="col-2 fleft">
-        <h5><%= page.title %></h5>
+        <h5><%= link_to page.title, page.url %></h5>
         <p class="text">
             <%= raw truncate_html(page.countent_without_images, :length => 500) %>
         </p>
