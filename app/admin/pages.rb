@@ -29,6 +29,7 @@ ActiveAdmin.register Page do
   form do |f|
     f.inputs "General info" do
       f.input :title
+      f.input :show_all_button_text
       f.input :country, :as => :select
       f.input :city, :as => :select
       f.input :category, :as => :select

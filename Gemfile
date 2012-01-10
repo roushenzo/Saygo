@@ -5,7 +5,7 @@ gem 'rails', '3.1.1'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2'
+gem 'mysql2', '0.3.11'
 gem 'json'
 gem 'activeadmin'
 gem 'meta_search', '>= 1.1.0.pre' # requires for activeadmin

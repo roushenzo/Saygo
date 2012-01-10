@@ -58,7 +58,7 @@
                                                            <li><span>10</span><a href="#">Сад бабочек</a></li>
                                                        </ul> -->
                                <%= link_to page_path(@country, @city), :class => 'text-button button-width2 text-button-indent1' do %>
-                                   <span><span>Все достопримечательности</span></span>
+                                   <span><span><%= @page.show_all_button_text %></span></span>
                                <% end %>
             </div>
         </div>
