@@ -6,7 +6,6 @@ set :rails_env, 'production'
 set :branch, 'master'
 server 'test.saygo.ru', :web, :app, :db, :primary => true
 set :normalize_asset_timestamps, false
-set :port, 42222
 
 set :use_sudo, false
 set :user, "ubuntu"
