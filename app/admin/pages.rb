@@ -1,6 +1,7 @@
 ActiveAdmin.register Page do
   show do
     attributes_table :title, :country, :city, :category, :description_type, :meta_title, :meta_keys, :meta_description, :created_at, :updated_at
+    active_admin_comments
   end
 
   filter :country
