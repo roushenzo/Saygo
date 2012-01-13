@@ -4,8 +4,8 @@ class Page < ActiveRecord::Base
   extend FriendlyId
   friendly_id :translit_title, :use => :slugged
 
-  has_many :photos
-  has_many :info_blocks
+  has_many :photos, :dependent => :destroy
+  has_many :info_blocks, :dependent => :destroy
   belongs_to :category
   belongs_to :country
   belongs_to :city
