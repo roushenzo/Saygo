@@ -22,7 +22,7 @@ SitemapGenerator::Sitemap.create do
   #
   # Add all articles:
   #
-  Page.find_each do |page|
+  Page.where(:active => true).each do |page|
     add page_path(page.url), :lastmod => page.updated_at
   end
 end
