@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Page < ActiveRecord::Base
   paginates_per 20
   acts_as_commentable
