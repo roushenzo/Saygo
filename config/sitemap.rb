@@ -23,6 +23,6 @@ SitemapGenerator::Sitemap.create do
   # Add all articles:
   #
   Page.find_each do |page|
-    add url_for(page.url.merge({:host => SitemapGenerator::Sitemap.default_host})), :lastmod => page.updated_at
+    add page_path(page.url), :lastmod => page.updated_at
   end
 end

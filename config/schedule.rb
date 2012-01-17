@@ -18,6 +18,7 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
+set :output, '/home/ubuntu/saygo/current/log/cron.log'
 every 5.minutes do #, :at => '5:00 am' do
   rake "-s sitemap:refresh"
 end
