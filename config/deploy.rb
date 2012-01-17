@@ -25,7 +25,8 @@ after "deploy:update_code", :symlink_config_files
 task :symlink_config_files do
   symlinks = {
     "#{shared_path}/config/database.yml" => "#{release_path}/config/database.yml",
-    "#{shared_path}/uploads" => "#{release_path}/public/uploads"
+    "#{shared_path}/uploads" => "#{release_path}/public/uploads",
+    "#{shared_path}/sitemap" => "#{release_path}/public/sitemap"
   }
   run symlinks.map{|from, to| "ln -nfs #{from} #{to}"}.join(" && ")
   run "chmod -R g+rw #{release_path}/public"

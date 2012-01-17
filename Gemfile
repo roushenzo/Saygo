@@ -25,6 +25,8 @@ gem "friendly_id", "~> 4.0.0.beta14"
 gem 'kaminari'
 gem 'nokogiri'
 gem 'acts_as_commentable'
+gem 'sitemap_generator'
+gem 'whenever', :require => false
 
 group :test, :development do
   gem 'rails-dev-tweaks', '~> 0.5.2'

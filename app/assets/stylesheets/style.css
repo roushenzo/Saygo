@@ -352,6 +352,7 @@ h4 span{ display:block; color:#858585; font-size:14px;}
 .footer{ padding:15px 0 51px 0;}
 .banner-footer{ width:206px;}
 .banner-footer img{ margin-right:10px; margin-top:5px; margin-bottom:51px;}
+.banner-footer a{ float: right; }
 .footer p{ padding:0 0 0 19px;}
 
 
