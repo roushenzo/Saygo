@@ -32,6 +32,6 @@ module PagesHelper
     items << link_to(@page.title, @page.url) if @page
     items.compact!
     items.last.gsub!('<a', '<span').gsub!('</a', '</span') if items.last
-    content_tag(:div, items.join('<span>&nbsp;/&nbsp;</span>').html_safe, :class => 'clear').html_safe
+    content_tag(:div, items.join('<span>&nbsp;/&nbsp;</span>').html_safe, :class => 'clear breadcrumbs').html_safe
   end
 end
