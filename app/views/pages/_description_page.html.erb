@@ -1,7 +1,7 @@
 <div class="coontent content-indent1">
     <%= breadcrumbs %>
     <% if @page.country? && @country %>
-        <%= list_cities(@country.cities) %>
+        <%= list_cities(@country) %>
     <% end %>
     <div class="row-box3">
         <div class="clear">

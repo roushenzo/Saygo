@@ -1,5 +1,7 @@
 module CitiesHelper
-  def list_cities(cities)
+  def list_cities(country)
+    country_pages_ids = Page.scoped(:conditions => ["category_id is NULL and city_id is not NULL and active=?", true]).select(:city_id).map(&:city_id).uniq
+    cities = country.cities.where(:id => country_pages_ids)
     uls = (1..4).inject([]) {|array, i| array << "<ul class='list-language fleft'>"}
     uls << "<ul class='list-language right-indent-none fleft'>"
     cities.in_groups_of(5, false).each do |group|
