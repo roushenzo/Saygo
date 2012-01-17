@@ -27,6 +27,8 @@ gem 'nokogiri'
 gem 'acts_as_commentable'
 gem 'sitemap_generator'
 gem 'whenever', :require => false
+gem 'capistrano', :group => 'development'
+gem 'i18n'
 
 group :test, :development do
   gem 'rails-dev-tweaks', '~> 0.5.2'
