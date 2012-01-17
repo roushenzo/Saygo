@@ -6,5 +6,4 @@ class CountriesController < InheritedResources::Base
     @countries = Country.all
     @top_countries = Country.limit(10) # TODO: use rating for countries in the future
   end
-
 end

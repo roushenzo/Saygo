@@ -9,6 +9,8 @@ ActiveAdmin.register Page do
   filter :category
   filter :description_type
   filter :title
+  filter :sight_of_the_day, :as => :select
+  filter :active, :as => :select
   filter :created_at
   filter :updated_at
 
@@ -29,6 +31,7 @@ ActiveAdmin.register Page do
 
   form do |f|
     f.inputs "General info" do
+      f.input :active
       f.input :title
       f.input :show_all_button_text
       f.input :country, :as => :select

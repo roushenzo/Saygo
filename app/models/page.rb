@@ -21,7 +21,7 @@ class Page < ActiveRecord::Base
   attr_accessor :order_by
 
   def self.current_sight_of_the_day
-    where(:sight_of_the_day => true).last || first
+    where(:sight_of_the_day => true, :active => true).last || first
   end
 
   def content
@@ -45,6 +45,7 @@ class Page < ActiveRecord::Base
       end
     end
     search_query << pages[:slug].eq(params[:id]) if params[:id].present?
+    search_query << pages[:active].eq(true)
     search_query << pages[:title].matches("%#{title}%")
     search_query.inject(Page.scoped) { |res, arel_query| res.where(arel_query) }.page(params[:page])
   end
