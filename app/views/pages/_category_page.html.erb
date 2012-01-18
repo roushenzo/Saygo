@@ -36,7 +36,7 @@
                             <% @page.photos.each do |p| %>
                                 <li>
                                     <%= link_to p.file.url, :class => 'fancybox', :rel => 'fancybox' do %>
-                                        <%= image_tag(p.file.url(:thumb)) %>
+                                        <%= image_tag(p.file.url(:thumb), :alt => @page.title, :title => @page.title) %>
                                     <% end %>
                                 </li>
                             <% end %>
