@@ -1,4 +1,5 @@
 ActiveAdmin.register Photo do
+  menu :parent => 'Pages'
   index do
     column :id
     column :file  do |photo|

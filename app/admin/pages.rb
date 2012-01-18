@@ -1,6 +1,7 @@
 ActiveAdmin.register Page do
   show do
-    attributes_table :title, :country, :city, :category, :description_type, :meta_title, :meta_keys, :meta_description, :created_at, :updated_at
+    attributes_table :title, :country, :city, :category, :sub_category, :sub_category_value, :description_type, :meta_title, :meta_keys,
+      :meta_description, :created_at, :updated_at
     active_admin_comments
   end
 
@@ -37,6 +38,8 @@ ActiveAdmin.register Page do
       f.input :country, :as => :select
       f.input :city, :as => :select
       f.input :category, :as => :select
+      f.input :sub_category, :as => :select
+      f.input :sub_category_value, :as => :select
     end
 
     f.inputs 'Boolean flags' do
