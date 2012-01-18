@@ -16,7 +16,7 @@
             <div class="row1 clear">
                 <div class="row1-col-3 label fleft">Страна:</div>
                 <div class="row1-col-4 fleft">
-                  <%= select_tag :country_id, options_from_collection_for_select(Country.all, :slug, :name, @page.country.try(:slug)) %>
+                  <%= select_tag :country_id, options_from_collection_for_select(Country.for_frontend, :slug, :name, @page.country.try(:slug)) %>
                 </div>
                 <div class="row1-col-5 label fleft">Город:</div>
                 <div class="row1-col-6 fleft">
