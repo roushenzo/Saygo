@@ -23,8 +23,10 @@ class Page < ActiveRecord::Base
   validates :sub_category_id, :presence => true, :if => :sub_category_value_id
   validates_uniqueness_of :title, :scope => [:country_id, :city_id, :category_id, :description_type_id]
   after_save :reset_sights_of_the_day, :if => "sight_of_the_day? && sight_of_the_day_changed?"
+  after_save :reset_show_in_top, :if => "show_in_top_changed? && show_in_top?"
   attr_accessor :order_by
   scope :inactive, where(:active => false)
+  scope :for_top, where(:show_in_top => true).limit(10)
 
   def self.current_sight_of_the_day
     where(:sight_of_the_day => true).last || last
@@ -96,6 +98,11 @@ class Page < ActiveRecord::Base
   end
 
   private
+  def reset_show_in_top
+    ps = category? ? self.class.where(:show_in_top => true, :category_id => category_id, :city_id => city_id, :country_id => country_id) :
+          self.class.where(:show_in_top => true, :description_type_id => description_type_id, :city_id => city_id, :country_id => country_id)
+  end
+
   def default_image_tag
     %Q{<img src="/assets/blank.jpg" class="img-indent"></img>}
   end
@@ -110,7 +117,7 @@ class Page < ActiveRecord::Base
   end
 
   def reset_sights_of_the_day
-    Page.update_all "sight_of_the_day = 0", ["id <> ? AND sight_of_the_day = 1", self.id]
+    self.class.update_all "sight_of_the_day = 0", ["id <> ? AND sight_of_the_day = 1", self.id]
   end
 
   def translit_title

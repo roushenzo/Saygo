@@ -1,5 +1,4 @@
 ActiveAdmin.register DescriptionType do
-  menu :parent => 'Categories'
   form do |f|
     f.inputs do
       f.input :category

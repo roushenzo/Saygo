@@ -3,8 +3,8 @@ ActiveAdmin.register Page do
   scope :all
 
   show do
-    attributes_table :title, :country, :city, :category, :sub_category, :sub_category_value, :description_type, :meta_title, :meta_keys,
-      :meta_description, :created_at, :updated_at
+    attributes_table :title, :country, :city, :category, :sub_category, :sub_category_value, :description_type, :sight_of_the_day,
+      :show_in_top, :meta_title, :meta_keys, :meta_description, :created_at, :updated_at
     active_admin_comments
   end
 
@@ -15,6 +15,7 @@ ActiveAdmin.register Page do
   filter :title
   filter :sight_of_the_day, :as => :select
   filter :active, :as => :select
+  filter :show_in_top, :as => :select
   filter :created_at
   filter :updated_at
 
@@ -35,19 +36,20 @@ ActiveAdmin.register Page do
 
   form do |f|
     f.inputs "General info" do
-      f.input :active
       f.input :title
       f.input :show_all_button_text
       f.input :country, :as => :select
       f.input :city, :as => :select
+      f.input :description_type
       f.input :category, :as => :select
       f.input :sub_category, :as => :select
       f.input :sub_category_value, :as => :select
     end
 
     f.inputs 'Boolean flags' do
+      f.input :active
       f.input :sight_of_the_day
-      f.input :description_type
+      f.input :show_in_top
     end
 
     f.inputs :meta_title, :meta_keys, :meta_description, :name => "Meta tags"

@@ -4,7 +4,6 @@ class Category < ActiveRecord::Base
 
   has_many :pages
   has_many :sub_categories
-  has_many :description_types
   validates :name, :presence => true
   scope :for_search_bar, where(:show_in_the_search_bar => true)
 
