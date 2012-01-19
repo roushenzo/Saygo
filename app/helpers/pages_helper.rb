@@ -1,6 +1,6 @@
 module PagesHelper
   def side_menu_title
-    @page.description_type.try(:name) || @page.category.try(:name)
+    @page.description_type.try(:name) || @page.category.description_type.try(:name)
   end
 
   def side_bar_for_page(page)
@@ -12,8 +12,9 @@ module PagesHelper
 
   def menu_items_for_page(page)
     items = []
-    pages = @page.category? ? Page.for_top.where(:category_id => @page.category_id) :
-                Page.for_top.where(:description_type_id => @page.description_type_id, :category_id => nil)
+    pages = Page.for_top.where(:description_type_id => @page.description_type_id || @page.category.try(:description_type_id),
+                               :city_id => @page.city_id,
+                               :country_id => @page.country_id)
     items = pages.inject([]) {|items, p|  items << content_tag(:li, link_to(truncate(p.title, :length => 25), p.url), :class => ('active' if @page == p)).html_safe}
     items.join.html_safe
   end

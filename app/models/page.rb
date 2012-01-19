@@ -98,8 +98,10 @@ class Page < ActiveRecord::Base
 
   private
   def reset_show_in_top
-    ps = category? ? self.class.where(:show_in_top => true, :category_id => category_id, :city_id => city_id, :country_id => country_id) :
-          self.class.where(:show_in_top => true, :description_type_id => description_type_id, :city_id => city_id, :country_id => country_id)
+    ps = self.class.where(:show_in_top => true,
+                          :description_type_id => description_type_id || category.try(:description_type_id),
+                          :city_id => city_id,
+                          :country_id => country_id)
     if ps.count > 10
       (11..ps.count).each do |i|
         ps[i-11].update_attribute(:show_in_top, false) if ps[i-11] != self
