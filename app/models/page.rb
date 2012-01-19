@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Page < ActiveRecord::Base
-  default_scope where(:active => true)
+  default_scope where(:active => true).order('created_at DESC')
   paginates_per 20
   acts_as_commentable
   extend FriendlyId
@@ -22,8 +22,7 @@ class Page < ActiveRecord::Base
   validates :sub_category_value_id, :presence => true, :if => :sub_category_id
   validates :sub_category_id, :presence => true, :if => :sub_category_value_id
   validates_uniqueness_of :title, :scope => [:country_id, :city_id, :category_id, :description_type_id]
-  after_save :reset_sights_of_the_day, :if => "sight_of_the_day? && sight_of_the_day_changed?"
-  after_save :reset_show_in_top, :if => "show_in_top_changed? && show_in_top?"
+  after_save :reset_boolean_fields
   attr_accessor :order_by
   scope :inactive, where(:active => false)
   scope :for_top, where(:show_in_top => true).limit(10)
@@ -101,6 +100,15 @@ class Page < ActiveRecord::Base
   def reset_show_in_top
     ps = category? ? self.class.where(:show_in_top => true, :category_id => category_id, :city_id => city_id, :country_id => country_id) :
           self.class.where(:show_in_top => true, :description_type_id => description_type_id, :city_id => city_id, :country_id => country_id)
+    if ps.count > 10
+      (11..ps.count).each do |i|
+        ps[i-11].update_attribute(:show_in_top, false) if ps[i-11] != self
+      end
+    end
+  end
+
+  def reset_sigt_of_the_day
+    self.class.update_all "sight_of_the_day = 0", ["id <> ? AND sight_of_the_day = 1", self.id]
   end
 
   def default_image_tag
@@ -116,8 +124,9 @@ class Page < ActiveRecord::Base
     }
   end
 
-  def reset_sights_of_the_day
-    self.class.update_all "sight_of_the_day = 0", ["id <> ? AND sight_of_the_day = 1", self.id]
+  def reset_boolean_fields
+    reset_show_in_top if show_in_top_changed? && show_in_top?
+    reset_sigt_of_the_day if sight_of_the_day? && sight_of_the_day_changed?
   end
 
   def translit_title
