@@ -12,7 +12,7 @@ class Country < ActiveRecord::Base
   mount_uploader :flag, FlagUploader
 
   def self.for_frontend
-    country_pages_ids = Page.where(:active => true, :city_id => nil).select(:country_id).map(&:country_id).uniq
+    country_pages_ids = Page.where(:city_id => nil).select(:country_id).map(&:country_id).uniq
     self.where(:id => country_pages_ids)
   end
 

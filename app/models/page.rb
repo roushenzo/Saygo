@@ -1,5 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Page < ActiveRecord::Base
+  default_scope where(:active => true)
   paginates_per 20
   acts_as_commentable
   extend FriendlyId
@@ -23,9 +24,10 @@ class Page < ActiveRecord::Base
   validates_uniqueness_of :title, :scope => [:country_id, :city_id, :category_id, :description_type_id]
   after_save :reset_sights_of_the_day, :if => "sight_of_the_day? && sight_of_the_day_changed?"
   attr_accessor :order_by
+  scope :inactive, where(:active => false)
 
   def self.current_sight_of_the_day
-    where(:sight_of_the_day => true, :active => true).last || first
+    where(:sight_of_the_day => true).last || last
   end
 
   def content
@@ -49,7 +51,6 @@ class Page < ActiveRecord::Base
       end
     end
     search_query << pages[:slug].eq(params[:id]) if params[:id].present?
-    search_query << pages[:active].eq(true)
     search_query << pages[:title].matches("%#{title}%")
     search_query.inject(Page.scoped) { |res, arel_query| res.where(arel_query) }.page(params[:page])
   end

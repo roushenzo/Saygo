@@ -1,4 +1,7 @@
 ActiveAdmin.register Page do
+  scope :inactive
+  scope :all
+
   show do
     attributes_table :title, :country, :city, :category, :sub_category, :sub_category_value, :description_type, :meta_title, :meta_keys,
       :meta_description, :created_at, :updated_at
@@ -72,5 +75,11 @@ ActiveAdmin.register Page do
     @page.save!
     flash[:notice] = 'Page was updated successfully.'
     render :text => ''
+  end
+
+  controller do
+    def resource
+      @page ||= active_admin_config.resource.unscoped.find(params[:id])
+    end
   end
 end
