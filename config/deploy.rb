@@ -4,7 +4,7 @@ set :application, "saygo"
 set :deploy_to, "/home/ubuntu/saygo"
 set :rails_env, 'production'
 set :branch, 'master'
-server 'test.saygo.ru', :web, :app, :db, :primary => true
+server 'saygo.ru', :web, :app, :db, :primary => true
 set :normalize_asset_timestamps, false
 
 set :use_sudo, false
