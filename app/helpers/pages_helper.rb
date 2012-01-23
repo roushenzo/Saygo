@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module PagesHelper
   def side_menu_title
     @page.description_type.try(:name) || @page.category.description_type.try(:name)
@@ -5,8 +6,9 @@ module PagesHelper
 
   def side_bar_for_page(page)
     res = []
-    res << content_tag(:h3, side_menu_title).html_safe
-    res << content_tag(:ul, menu_items_for_page(page), :class => 'list2').html_safe
+    res << content_tag(:h3, content_tag(:strong, 'Топ 10').html_safe + content_tag(:span, side_menu_title).html_safe,
+                        :class => 'title-bottom1').html_safe
+    res << content_tag(:ul, menu_items_for_page(page), :class => 'list1-top-10').html_safe
     res.join.html_safe
   end
 
@@ -15,7 +17,11 @@ module PagesHelper
     pages = Page.for_top.where(:description_type_id => @page.description_type_id || @page.category.try(:description_type_id),
                                :city_id => @page.city_id,
                                :country_id => @page.country_id)
-    items = pages.inject([]) {|items, p|  items << content_tag(:li, link_to(truncate(p.title, :length => 25), p.url), :class => ('active' if @page == p)).html_safe}
+    pages.each_with_index do |p, index|
+      items << content_tag(:li, content_tag(:span, index.succ, :class => "bg#{index.succ}") +
+                                  link_to(truncate(p.title, :length => 25), p.url),
+                                :class => ('active' if @page == p)).html_safe
+    end
     items.join.html_safe
   end
 
