@@ -5,6 +5,26 @@ module PagesHelper
   end
 
   def side_bar_for_page(page)
+    page.show_menu? ? marked_pages_menu(page) : top_menu(page)
+  end
+
+  def marked_pages_menu(page)
+    res = []
+    res << content_tag(:h3, 'Похожее').html_safe
+    res << content_tag(:ul, marked_menu_items(page), :class => 'list2').html_safe
+    res.join.html_safe
+  end
+
+  def marked_menu_items(page)
+    res = []
+    Page.where(:show_in_menu => true).each do |p|
+      res <<  content_tag(:li, link_to(truncate(p.title, :length => 25), p.url),
+                          :class => ('active' if @page == p)).html_safe
+    end
+    res.join.html_safe
+  end
+
+  def top_menu(page)
     res = []
     res << content_tag(:h3, content_tag(:strong, 'Топ 10').html_safe + content_tag(:span, side_menu_title).html_safe,
                         :class => 'title-bottom1').html_safe

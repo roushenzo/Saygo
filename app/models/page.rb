@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Page < ActiveRecord::Base
-  default_scope where(:active => true).order('created_at DESC')
+  default_scope where(:active => true).order('show_first DESC, created_at DESC')
   paginates_per 20
   acts_as_commentable
   extend FriendlyId
@@ -104,7 +104,7 @@ class Page < ActiveRecord::Base
                           :country_id => country_id)
     if ps.count > 10
       (11..ps.count).each do |i|
-        ps[i-11].update_attribute(:show_in_top, false) if ps[i-11] != self
+        ps[i-11].update_attribute(:show_in_top, false) if ps[i-11].id != id
       end
     end
   end
@@ -126,9 +126,28 @@ class Page < ActiveRecord::Base
     }
   end
 
+  def reset_show_first
+    self.class.unscoped.update_all ["show_first = ?", false],
+      ["country_id = :country_id AND city_id = :city_id AND id NOT in (:id)",
+        {:city_id => city_id, :country_id => country_id, :show_first => true, :id => id}]
+  end
+
+  def reset_all_boolean_flags
+    self.update_column(:show_in_top, false)
+    self.update_column(:sight_of_the_day, false)
+    self.update_column(:show_first, false)
+  end
+
+  def set_show_in_menu
+    self.update_column(:show_in_menu, true)
+  end
+
   def reset_boolean_fields
     reset_show_in_top if show_in_top_changed? && show_in_top?
     reset_sigt_of_the_day if sight_of_the_day? && sight_of_the_day_changed?
+    reset_show_first if show_first_changed? && show_first?
+    reset_all_boolean_flags if active_changed? && !active?
+    set_show_in_menu if show_menu_changed? && show_menu?
   end
 
   def translit_title

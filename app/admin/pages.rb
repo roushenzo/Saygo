@@ -4,7 +4,7 @@ ActiveAdmin.register Page do
 
   show do
     attributes_table :title, :country, :city, :category, :sub_category, :sub_category_value, :description_type, :sight_of_the_day,
-      :show_in_top, :meta_title, :meta_keys, :meta_description, :created_at, :updated_at
+      :show_in_top, :show_first, :show_menu, :show_in_menu, :meta_title, :meta_keys, :meta_description, :created_at, :updated_at
     active_admin_comments
   end
 
@@ -50,6 +50,9 @@ ActiveAdmin.register Page do
       f.input :active
       f.input :sight_of_the_day
       f.input :show_in_top
+      f.input :show_first
+      f.input :show_menu
+      f.input :show_in_menu, :label => 'Show in side menu'
     end
 
     f.inputs :meta_title, :meta_keys, :meta_description, :name => "Meta tags"
