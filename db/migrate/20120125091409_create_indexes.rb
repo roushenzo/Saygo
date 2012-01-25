@@ -8,7 +8,6 @@ class CreateIndexes < ActiveRecord::Migration
     add_index :sub_category_values, :sub_category_id
     add_index :info_blocks, :page_id
     add_index :description_types, :slug
-    add_index :description_types, :category_id
     add_index :countries, :slug
     add_index :cities, :slug
     add_index :categories, :slug
