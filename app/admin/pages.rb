@@ -86,5 +86,9 @@ ActiveAdmin.register Page do
     def resource
       @page ||= active_admin_config.resource.unscoped.find(params[:id])
     end
+
+    def scoped_collection
+      end_of_association_chain.unscoped
+    end
   end
 end
