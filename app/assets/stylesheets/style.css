@@ -79,6 +79,7 @@ h4 span{ display:block; color:#858585; font-size:14px;}
 .indent-top{ padding-top:16px;}
 .indent-top1{ padding-top:22px;}
 .img-bottom{ margin-bottom:17px;}
+.img-indent{ float:left; margin:0 19px 0 0;}
 .indent-top-bottom{ padding:16px 0 16px 0;}
 
 /**/
