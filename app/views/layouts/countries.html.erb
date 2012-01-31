@@ -16,12 +16,12 @@
             <div class="row-box1 row-box1-indent">
                 <div class="clear">
                     <!--right-->
-                    <div class="col-right fright">
-                        <h3>Достопримечательность дня</h3>
+                    <div class="col-right fright">                       
                         <% if @sight_of_the_day.present? %>
-                            <div class="clear">
-                                <p><%= @sight_of_the_day.title %></p>
-                                <%= raw truncate_html(@sight_of_the_day.content, :length => 1000) %>
+                        <h3><%=@sight_of_the_day.title%></h3>
+                            <div class="clear">                          
+                             <%= image_tag @sight_of_the_day.featured_image_file.url,:class=>"img-indent" %>
+                                <%= raw truncate_html(@sight_of_the_day.countent_without_images, :length => 1000) %>
                             </div>
                             <p class='link-top'>
                                 <%= link_to 'Подробнее',
