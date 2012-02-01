@@ -18,7 +18,7 @@
                     <!--right-->
                     <div class="col-right fright">                       
                         <% if @sight_of_the_day.present? %>
-                        <h3><%=@sight_of_the_day.title%></h3>
+                        <h3><%= @sight_of_the_day.title %></h3>
                             <div class="clear">                          
                               <%= image_tag @sight_of_the_day.featured_image_file.url(:for_search) , :class => "img-indent" %>
                               <%= raw truncate_html(@sight_of_the_day.countent_without_images, :length => 1000) %>
