@@ -34,12 +34,13 @@ module PagesHelper
 
   def menu_items_for_page(page)
     items = []
-    pages = Page.for_top.where(:description_type_id => @page.description_type_id || @page.category.try(:description_type_id),
-                               :city_id => @page.city_id,
-                               :country_id => @page.country_id)
+    pages = @page.country? ? Page.where(:description_type_id => @page.description_type_id, :city_id => nil).limit(10) :
+      Page.for_top.where(:description_type_id => @page.description_type_id || @page.category.try(:description_type_id),
+                         :city_id             => @page.city_id,
+                         :country_id          => @page.country_id).limit(10)
     pages.each_with_index do |p, index|
       items << content_tag(:li, content_tag(:span, index.succ, :class => "bg#{index.succ}") +
-                                  link_to(truncate(p.title, :length => 25), p.url),
+                                  link_to(truncate(@page.country? ? p.country_name : p.title, :length => 25), p.url),
                                 :class => ('active' if @page == p)).html_safe
     end
     items.join.html_safe

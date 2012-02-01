@@ -26,6 +26,7 @@ class Page < ActiveRecord::Base
   attr_accessor :order_by
   scope :inactive, where(:active => false)
   scope :for_top, where(:show_in_top => true).limit(10)
+  delegate :name, :to => :country, :prefix => true, :allow_nil => true
 
   def self.current_sight_of_the_day
     where(:sight_of_the_day => true).last || last
