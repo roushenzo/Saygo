@@ -16,7 +16,7 @@
                 <div class="row-form-left fleft">Страна:</div>
                 <div class="row-form-right fleft">
                     <%= select_tag :country_id,
-                        options_from_collection_for_select(@countries, :slug, :name), :prompt => 'Выберите страну' %>
+                        options_from_collection_for_select(Country.all, :slug, :name), :prompt => 'Выберите страну' %>
                 </div>
              </div>
              <div class="row-form clear">
