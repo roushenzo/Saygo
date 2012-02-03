@@ -4,6 +4,7 @@ class DescriptionType < ActiveRecord::Base
   extend FriendlyId
   friendly_id :translit_name, :use => :slugged
   validates :name, :presence => true
+  accepts_nested_attributes_for :categories
 
   private
   def translit_name
