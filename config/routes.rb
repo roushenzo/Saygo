@@ -10,6 +10,8 @@ Saygo::Application.routes.draw do
   match 'categories/:category_id/sub_categories', :to => 'sub_categories#index', :as => :category_sub_categories, :via => :get
   match 'sub_categories/:sub_category_id/values', :to => 'sub_category_values#index', :as => :sub_category_values, :via => :get
   match ':country_id(/:city_id(/:category_id(/:id)))', :to => 'pages#show', :as => :page, :via => :get
+  match 'countries/:country_id/cities', :to => 'cities#index', :as => :country_cities, :via => :get
+  match 'pages/:page_id/comments', :to => 'comments#create', :as => :page_comments, :via => :post
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

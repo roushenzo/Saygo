@@ -6,6 +6,8 @@ class Page < ActiveRecord::Base
   extend FriendlyId
   friendly_id :translit_title, :use => :slugged
 
+
+  has_many :comments
   has_many :photos, :dependent => :destroy
   has_many :info_blocks, :dependent => :destroy
   belongs_to :category

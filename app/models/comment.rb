@@ -1,15 +1,14 @@
 class Comment < ActiveRecord::Base
+  #belongs_to :commentable, :polymorphic => true
+  belongs_to :page
+  default_scope :order => "created_at DESC"
 
-  include ActsAsCommentable::Comment
+  email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
-  belongs_to :commentable, :polymorphic => true
+  validates :email, :presence => true,
+            :format => {:with => email_regex}
+  validates_presence_of :user_name
+  validates_presence_of :description
 
-  default_scope :order => 'created_at ASC'
 
-  # NOTE: install the acts_as_votable plugin if you
-  # want user to vote on the quality of comments.
-  #acts_as_voteable
-
-  # NOTE: Comments belong to a user
-  belongs_to :user
 end

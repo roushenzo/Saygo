@@ -6,5 +6,6 @@ class PagesController < InheritedResources::Base
     @city = @page.city
     @category = @page.category
     @description_type = @page.description_type
+    @comment = @page.comments.build unless (@page.country? || @page.city?)
   end
 end
