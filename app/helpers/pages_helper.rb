@@ -34,7 +34,7 @@ module PagesHelper
 
   def menu_items_for_page(page)
     items = []
-    search_params = @page.country? ?
+    search_params = (@page.country? || @page.city?) ?
                       {:category_id => Category.where(:description_type_id => @page.description_type_id).map(&:id),
                         :country_id => @page.country_id} :
                         {:city_id => @page.city_id, :country_id => @page.country_id}
