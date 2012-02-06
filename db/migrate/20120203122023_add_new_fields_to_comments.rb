@@ -6,6 +6,8 @@ class AddNewFieldsToComments < ActiveRecord::Migration
       add_column :comments, :user_name, :string
       add_column :comments, :description, :text
       add_column :comments, :page_id, :integer
+      remove_column :comments, :title
+      remove_column :comments, :comment
   end
 
 end
