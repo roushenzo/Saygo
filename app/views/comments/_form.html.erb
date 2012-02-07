@@ -1,26 +1,26 @@
 <h3 class="title-text title-text-top0">Добавить отзыв</h3>
-           <%= form_for [@page, @comment] do |f|  %>
-               <div class="row-form1 clear">
-                   <div class="col-1 fleft">
-                       <div class="row-form1 clear">
-                           <div class="row-form1-left fleft">Имя:</div>
-                           <div class="row-form1-right fleft"><%= f.text_field :user_name %></div>
-                        </div>
-                   </div>
-                   <div class="col-2 fleft">
-                       <div class="row-form1 clear">
-                           <div class="row-form1-left fleft">Email:</div>
-                           <div class="row-form1-right fleft"><%= f.text_field :email %></div>
-                        </div>
-                   </div>
-               </div>
-                <div class="row-form1 clear">
-                   <div class="row-form1-left fleft">Отзыв:</div>
-                   <div class="row-form1-right fleft"><%= f.text_area :description,:rows => 2,:cols => 2 %></textarea></div>
-                </div>
-                <div class="row-form1 clear">
-                   <div class="row-form1-left fleft">Рейтинг:</div>
-                   <div class="row-form1-right fleft"><span class="bg-star"><span><a href="#"></a><a href="#"></a><a href="#"></a><a href="#"></a></span><a href="#"></a></span></div>
-                </div>
-                <%= f.submit "send", :class => "button-submit1", :value => "&nbsp;".html_safe %>
-           <% end %>
+<%= form_for [@page, @comment] do |f|  %>
+    <div class="row-form1 clear">
+        <div class="col-1 fleft">
+            <div class="row-form1 clear">
+                <div class="row-form1-left fleft">Имя:</div>
+                <div class="row-form1-right fleft"><%= f.text_field :user_name %></div>
+             </div>
+        </div>
+        <div class="col-2 fleft">
+            <div class="row-form1 clear">
+                <div class="row-form1-left fleft">Email:</div>
+                <div class="row-form1-right fleft"><%= f.text_field :email %></div>
+             </div>
+        </div>
+    </div>
+     <div class="row-form1 clear">
+        <div class="row-form1-left fleft">Отзыв:</div>
+        <div class="row-form1-right fleft"><%= f.text_area :description,:rows => 2,:cols => 2 %></textarea></div>
+     </div>
+     <div class="row-form1 clear">
+        <div class="row-form1-left fleft">Рейтинг:</div>
+        <div class="row-form1-right fleft"><span class="bg-star"><span><a href="#"></a><a href="#"></a><a href="#"></a><a href="#"></a></span><a href="#"></a></span></div>
+     </div>
+     <%= f.submit '', :class => "button-submit1" %>
+<% end %>
