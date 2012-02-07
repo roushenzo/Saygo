@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name='yandex-verification' content='7545b90099830ba1' />
     <%= meta_tags %>
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application" %>
@@ -16,10 +17,10 @@
             <div class="row-box1 row-box1-indent">
                 <div class="clear">
                     <!--right-->
-                    <div class="col-right fright">                       
+                    <div class="col-right fright">
                         <% if @sight_of_the_day.present? %>
                         <h3><%= @sight_of_the_day.title %></h3>
-                            <div class="clear">                          
+                            <div class="clear">
                               <%= image_tag @sight_of_the_day.featured_image_file.url(:for_search) , :class => "img-indent" %>
                               <%= raw truncate_html(@sight_of_the_day.countent_without_images, :length => 1000) %>
                             </div>
