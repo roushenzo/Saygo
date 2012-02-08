@@ -13,7 +13,15 @@ ActiveAdmin.register CustomField do
   end
   form do |f|
     f.inputs do
-      f.input :name
+      f.input :icon_cache, :as => :hidden
+      if f.object.icon.present?
+        f.input :name, :hint => f.template.image_tag(f.object.icon)
+        f.input :remove_icon, :as => :boolean
+      else
+        f.input :name
+      end
+      f.input :icon, :as => :file
+      f.input :remote_icon_url, :as => :url
       f.input :categories, :as => :check_boxes
     end
     f.buttons
