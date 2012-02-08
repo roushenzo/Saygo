@@ -44,6 +44,17 @@ ActiveAdmin.register Page do
       f.input :category, :as => :select
     end
 
+    f.inputs 'Custom fields' do
+      f.has_many :page_custom_fields do |cf|
+        cf.input :custom_field, :as => :select
+        cf.input :values, :as => :check_boxes
+        cf.has_many :values do |cfv|
+          cfv.input :name
+        end
+        cf.input :_destroy, :as => :boolean, :label => 'Remove', :hint => "Deletes this custom field. You should press 'Update|Craete page button' to get effect"
+      end
+    end
+
     f.inputs 'Boolean flags' do
       f.input :active
       f.input :sight_of_the_day
@@ -55,11 +66,12 @@ ActiveAdmin.register Page do
 
     f.inputs :meta_title, :meta_keys, :meta_description, :name => "Meta tags"
 
-    f.inputs do
+    f.inputs 'Photos' do
       f.has_many :photos do |fi|
         fi.input :file_cache, :as => :hidden
         fi.input :file, :as => :file
         fi.input :remote_file_url, :as => :url
+        fi.input :remove_file, :as => :boolean, :hint => fi.object.persisted? ? fi.template.image_tag(fi.object.file.url(:thumb)) : ''
       end
     end
 

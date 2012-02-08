@@ -3,7 +3,7 @@ class Category < ActiveRecord::Base
   friendly_id :translit_name, :use => :slugged
 
   has_many :pages
-  has_many :category_custom_fields
+  has_many :category_custom_fields, :dependent => :destroy
   has_many :custom_fields, :through => :category_custom_fields
   belongs_to :description_type
   validates :name, :presence => true

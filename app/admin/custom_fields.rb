@@ -12,7 +12,7 @@ ActiveAdmin.register CustomField do
     active_admin_comments
   end
   form do |f|
-    f.inputs do
+    f.inputs 'Main fields' do
       f.input :icon_cache, :as => :hidden
       if f.object.icon.present?
         f.input :name, :hint => f.template.image_tag(f.object.icon)
@@ -23,6 +23,12 @@ ActiveAdmin.register CustomField do
       f.input :icon, :as => :file
       f.input :remote_icon_url, :as => :url
       f.input :categories, :as => :check_boxes
+    end
+    f.inputs 'Values' do
+      f.has_many :values do |fv|
+        fv.input :name
+        fv.input :_destroy, :as => :boolean, :label => 'Delete'
+      end
     end
     f.buttons
   end

@@ -6,7 +6,7 @@ class Country < ActiveRecord::Base
   has_many :pages, :conditions => {:city_id => nil, :category_id => nil}
   has_many :description_types, :through => :pages, :uniq => true
   has_many :categories, :through => :pages, :uniq => true
-  has_many :cities
+  has_many :cities, :dependent => :destroy
   validates :name, :presence => true, :uniqueness => true
   validates :flag, :presence => true
   mount_uploader :flag, FlagUploader

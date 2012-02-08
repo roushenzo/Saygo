@@ -6,6 +6,9 @@ class Page < ActiveRecord::Base
   extend FriendlyId
   friendly_id :translit_title, :use => :slugged
 
+  has_many :page_custom_fields
+  has_many :custom_fields, :through => :page_custom_fields
+  accepts_nested_attributes_for :page_custom_fields
 
   has_many :comments
   has_many :photos, :dependent => :destroy
