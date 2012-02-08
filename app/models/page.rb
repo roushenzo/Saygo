@@ -9,20 +9,14 @@ class Page < ActiveRecord::Base
 
   has_many :comments
   has_many :photos, :dependent => :destroy
-  has_many :info_blocks, :dependent => :destroy
   belongs_to :category
-  belongs_to :sub_category
-  belongs_to :sub_category_value
   belongs_to :country
   belongs_to :city
   belongs_to :description_type
   accepts_nested_attributes_for :photos
-  accepts_nested_attributes_for :info_blocks
   validates :country_id, :presence => true
   validates :city_id, :presence => true, :if => :category_id
   validates :title, :presence => true
-  validates :sub_category_value_id, :presence => true, :if => :sub_category_id
-  validates :sub_category_id, :presence => true, :if => :sub_category_value_id
   validates_uniqueness_of :title, :scope => [:country_id, :city_id, :category_id, :description_type_id]
   after_save :reset_boolean_fields
   attr_accessor :order_by

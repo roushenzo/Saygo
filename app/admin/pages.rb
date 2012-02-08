@@ -3,7 +3,7 @@ ActiveAdmin.register Page do
   scope :all
 
   show do
-    attributes_table :title, :country, :city, :category, :sub_category, :sub_category_value, :description_type, :sight_of_the_day,
+    attributes_table :title, :country, :city, :category, :description_type, :sight_of_the_day,
       :show_in_top, :show_first, :show_menu, :show_in_menu, :meta_title, :meta_keys, :meta_description, :created_at, :updated_at
     active_admin_comments
   end
@@ -42,8 +42,6 @@ ActiveAdmin.register Page do
       f.input :city, :as => :select
       f.input :description_type
       f.input :category, :as => :select
-      f.input :sub_category, :as => :select
-      f.input :sub_category_value, :as => :select
     end
 
     f.inputs 'Boolean flags' do
@@ -56,12 +54,6 @@ ActiveAdmin.register Page do
     end
 
     f.inputs :meta_title, :meta_keys, :meta_description, :name => "Meta tags"
-    f.inputs do
-      f.has_many :info_blocks do |fb|
-        fb.input :title
-        fb.input :content
-      end
-    end
 
     f.inputs do
       f.has_many :photos do |fi|
