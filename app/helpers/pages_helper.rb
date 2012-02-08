@@ -38,6 +38,7 @@ module PagesHelper
                       {:category_id => Category.where(:description_type_id => @page.description_type_id).map(&:id),
                         :country_id => @page.country_id} :
                         {:city_id => @page.city_id, :country_id => @page.country_id}
+    search_params[:city_id] = @page.city_id if @page.city?
     Page.for_top.where(search_params).order('RAND()').limit(10).each_with_index do |p, index|
       items << content_tag(:li, content_tag(:span, index.succ, :class => "bg#{index.succ}") +
                                   link_to(truncate(p.title, :length => 25), p.url),
