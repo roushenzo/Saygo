@@ -51,9 +51,9 @@ module PagesHelper
     items = []
     items << link_to(@country.name, page_path(@country)) if @country
     items << link_to(@city.name, page_path(@country, @city)) if @city
-    items << link_to(@category.name, page_path(@country, @city, @category)) if @category
-    items << link_to(@description_type.name,
-      page_path(@country, @city, @category, :description_type_id => @description_type.slug)) if @description_type
+    if @page.category?
+      items << link_to(@category.name, page_path(@country, @city, @category)) if @category
+    end
     items << link_to(@page.title, @page.url) if @page
     items.compact!
     items.last.gsub!('<a', '<span').gsub!('</a', '</span') if items.last
