@@ -7,4 +7,5 @@
  *= require style
  *= require jquery.fancybox
  *= require custom_style
+ *= require jquery.ui.stars
 */
