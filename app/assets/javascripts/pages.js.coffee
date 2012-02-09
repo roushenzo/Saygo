@@ -8,15 +8,5 @@ $(document).ready ->
     $($(this).attr('href')).fadeIn()
     return false
   $('.fancybox').fancybox({cyclic : true, scrolling : 'yes'})
-  $("#stars-wrapper2").stars({
-  	inputType: "select",
-  	disableValue: false
-  });
-  $(".fixed_stars").stars({
-  	inputType: "select",
-  	disabled: true
-  });
-
-
-
-
+  $("#stars-wrapper").stars({inputType: "select"})
+  $('.page-rate').stars({inputType: 'select', disabled: true}) #init static stars rate for page
