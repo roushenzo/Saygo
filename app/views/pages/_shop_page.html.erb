@@ -1,0 +1,97 @@
+<div class="coontent content-indent1">
+    <!--row-box4-->
+    <div class="row-box4">
+      <div class="clear">
+          <ul class="breadcrumbs clear">
+              <li><a href="#">Италия</a></li>
+                <li><a href="#">Рим</a></li>
+                <li><a href="#">Магазины</a></li>
+                <li>Бутик “Валентино”</li>
+            </ul>
+        </div>
+        <div class="clear">
+          <!--right-->
+          <div class="col-right fright">
+              <em class="star star-indent1"><span><a href="#"></a><a href="#"></a><a href="#"></a></span><a href="#"></a><a href="#"></a></em>
+                <h1>
+                  Бутик “Валентино”
+                </h1>
+                <div class="row-img-view">
+                  <div class="fright">
+                      <ul class="list-marker">
+                          <li class="marker1">
+                              <img src="images/marker1.jpg" alt="">
+                              <span class="col-1">Адрес:</span>
+                                <span class="col-2">2/2 Moo 2, Viset Rd. Tambon Rawai,A. Muang,<br>Phuket 83130 </span>
+                            </li>
+                            <li class="marker2">
+                              <img src="images/marker2.jpg" alt="">
+                              <span class="col-1">Часы работы:</span>
+                                <span class="col-2">08:00-19:00 </span>
+                            </li>
+                            <li class="marker3">
+                              <img src="images/marker3.jpg" alt="">
+                              <span class="col-1">Тип одежды:</span>
+                                <span class="col-2">Верхняя одежда </span>
+                            </li>
+                            <li class="marker4">
+                              <img src="images/marker4.jpg" alt="">
+                              <span class="col-1">Тип магазина:</span>
+                                <span class="col-2">Бутик</span>
+                            </li>
+                            <li class="marker5">
+                              <img src="images/marker5.jpg" alt="">
+                              <span class="col-1">Женская / Мужская:</span>
+                                <span class="col-2">Мужская </span>
+                            </li>
+                            <li class="marker6">
+                              <img src="images/marker6.jpg" alt="">
+                              <span class="col-1">Доп. Поле:</span>
+                                <span class="col-2">Бутик </span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="fleft txt1">
+                      <a href="#" class="slider-left txt"></a>
+                        <a href="#" class="slider-right txt"></a>
+                      <img src="images/gall_img2_big.jpg" alt="">
+                        <ul class="row-img-slider">
+                          <li><a href="#"><img src="images/gall_img1_small.jpg" alt=""></a></li>
+                            <li><a href="#"><img src="images/gall_img2_small.jpg" alt=""></a></li>
+                            <li><a href="#"><img src="images/gall_img3_small.jpg" alt=""></a></li>
+                        </ul>
+                    </div>
+                    <div class="clear1"></div>
+                </div>
+                <!--table-->
+                <div class="table-header">Представленные бренды</div>
+                <table class="table-content">
+                    <tbody><tr>
+                        <td><a href="#">Diesel</a></td>
+                        <td><a href="#">Wrangler</a></td>
+                        <td><a href="#">Adidas</a></td>
+                        <td><a href="#">Diesel</a></td>
+                        <td><a href="#">Wrangler</a></td>
+                        <td><a href="#">Adidas</a></td>
+                    </tr>
+                    <tr class="bg-tab">
+                        <td><a href="#">Adidas</a></td>
+                        <td><a href="#">Diesel</a></td>
+                        <td><a href="#">Wrangler</a></td>
+                        <td><a href="#">Adidas</a></td>
+                        <td><a href="#">Diesel</a></td>
+                        <td><a href="#">Wrangler</a></td>
+                    </tr>
+                </tbody></table>
+                <p class="indent-top">Достопримечательности Европы и достопримечательности Азии, да, наконец,достопримечательности всего мира – кто не мечтал увидеть их своими глазами! Побывать в древних храмах и роскошных дворцах, посетить самые знаменитые музеи, погулять по старинным улочкам тысячелетних европейских городов. Вот только определиться с выбором – куда именно поехать – не всегда бывает просто. Мы решили помочь вам в этом – на нашем сайте вы найдете.</p>
+            </div>
+            <!--left-->
+            <div class="col-left fleft">
+              <%= side_bar_for_page(@page) %>
+              <%= link_to page_path(@country, @city), :class => 'text-button button-width2 text-button-indent1' do %>
+                  <span><span><%= @page.show_all_button_text %></span></span>
+              <% end %>
+            </div>
+        </div>
+    </div>
+</div>

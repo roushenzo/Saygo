@@ -1,5 +1,7 @@
-<% if @page.category? %>
-    <%= render 'pages/category_page' %>
+<% if @page.shop_template? %>
+  <%= render 'pages/shop_page'%>
+<% elsif @page.category? %>
+  <%= render 'pages/category_page' %>
 <% else %>
-    <%= render 'pages/description_page' %>
+  <%= render 'pages/description_page' %>
 <% end %>

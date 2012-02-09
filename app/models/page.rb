@@ -21,6 +21,8 @@ class Page < ActiveRecord::Base
   validates :city_id, :presence => true, :if => :category_id
   validates :title, :presence => true
   validates_uniqueness_of :title, :scope => [:country_id, :city_id, :category_id, :description_type_id]
+  validates :shop_template, :inclusion => {:in => [false], :unless => :category?,
+                                           :message => 'It is impossible to apply shop template for description page'}
   after_save :reset_boolean_fields
   attr_accessor :order_by
   scope :inactive, where(:active => false)

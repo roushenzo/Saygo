@@ -56,12 +56,13 @@ ActiveAdmin.register Page do
     end
 
     f.inputs 'Boolean flags' do
-      f.input :active
-      f.input :sight_of_the_day
-      f.input :show_in_top
-      f.input :show_first
-      f.input :show_menu
-      f.input :show_in_menu, :label => 'Show in side menu'
+      f.input :active, :hint => 'Check this field if you want to hide this page. Users wont see this page at all'
+      f.input :sight_of_the_day, :hint => 'Show this page on the mane page - it is the featured page'
+      f.input :show_in_top, :hint => 'Check if you want to show this object on top 10 block'
+      f.input :show_first, :hint => 'If page is a desription page, this page will be showd first, e.g. when if click on the country or city link'
+      f.input :show_menu, :hint => 'Show side bar on this page instead of top block'
+      f.input :show_in_menu, :label => 'Show in side menu', :hint => 'Check this field if you want to show in the side bar'
+      f.input :shop_template, :hint => 'Check this button if you want to make design for this page as for shop'
     end
 
     f.inputs :meta_title, :meta_keys, :meta_description, :name => "Meta tags"
