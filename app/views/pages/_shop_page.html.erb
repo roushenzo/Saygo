@@ -1,66 +1,48 @@
 <div class="coontent content-indent1">
-    <!--row-box4-->
     <div class="row-box4">
-      <div class="clear">
-          <ul class="breadcrumbs clear">
-              <li><a href="#">Италия</a></li>
-                <li><a href="#">Рим</a></li>
-                <li><a href="#">Магазины</a></li>
-                <li>Бутик “Валентино”</li>
-            </ul>
-        </div>
+      <div class="clear"><%= breadcrumbs %></div>
         <div class="clear">
-          <!--right-->
           <div class="col-right fright">
-              <em class="star star-indent1"><span><a href="#"></a><a href="#"></a><a href="#"></a></span><a href="#"></a><a href="#"></a></em>
-                <h1>
-                  Бутик “Валентино”
-                </h1>
+              <!--
+                TODO place real rate here
+              -->
+                <h2><%= @page.title %></h2>
                 <div class="row-img-view">
                   <div class="fright">
                       <ul class="list-marker">
-                          <li class="marker1">
-                              <img src="images/marker1.jpg" alt="">
-                              <span class="col-1">Адрес:</span>
-                                <span class="col-2">2/2 Moo 2, Viset Rd. Tambon Rawai,A. Muang,<br>Phuket 83130 </span>
+                          <% @page.single_custom_fields.each do |cf| %>
+                            <% c_field = cf.custom_field %>
+                            <li>
+                              <% if c_field.icon.present? %>
+                                <%= image_tag c_field.icon, :alt => c_field.name, :title => c_field.name %>
+                              <% end %>
+                              <span class='col-1'><%= c_field.name %></span>
+                              <span class='col-2'><%= raw cf.values.first.name %></span>
                             </li>
-                            <li class="marker2">
-                              <img src="images/marker2.jpg" alt="">
-                              <span class="col-1">Часы работы:</span>
-                                <span class="col-2">08:00-19:00 </span>
-                            </li>
-                            <li class="marker3">
-                              <img src="images/marker3.jpg" alt="">
-                              <span class="col-1">Тип одежды:</span>
-                                <span class="col-2">Верхняя одежда </span>
-                            </li>
-                            <li class="marker4">
-                              <img src="images/marker4.jpg" alt="">
-                              <span class="col-1">Тип магазина:</span>
-                                <span class="col-2">Бутик</span>
-                            </li>
-                            <li class="marker5">
-                              <img src="images/marker5.jpg" alt="">
-                              <span class="col-1">Женская / Мужская:</span>
-                                <span class="col-2">Мужская </span>
-                            </li>
-                            <li class="marker6">
-                              <img src="images/marker6.jpg" alt="">
-                              <span class="col-1">Доп. Поле:</span>
-                                <span class="col-2">Бутик </span>
-                            </li>
+                          <% end %>
                         </ul>
                     </div>
+                    <% if @page.photos.present? %>
                     <div class="fleft txt1">
-                      <a href="#" class="slider-left txt"></a>
-                        <a href="#" class="slider-right txt"></a>
-                      <img src="images/gall_img2_big.jpg" alt="">
-                        <ul class="row-img-slider">
-                          <li><a href="#"><img src="images/gall_img1_small.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="images/gall_img2_small.jpg" alt=""></a></li>
-                            <li><a href="#"><img src="images/gall_img3_small.jpg" alt=""></a></li>
+                      <a class="slider-left txt"></a>
+                      <a class="slider-right txt"></a>
+                        <div class='fancybox-inline-container'>
+                          <% @page.photos.map(&:file).each_with_index do |f, i| %>
+                            <%= image_tag f.url(:medium), :alt => @page.title, :title => @page.title, :id => "medium-image#{i}", :class => 'fancybox-menium-image' %>
+                          <% end %>
+                        </div>
+                        <ul class="row-img-slider" id='carousel2'>
+                          <% @page.photos.map(&:file).each_with_index do |f, i| %>
+                            <li>
+                              <%= link_to "#medium-image#{i}", :class => 'fancybox-inline' do %>
+                                <%= image_tag f.url(:thumb), :alt => @page.title, :title => @page.title,
+                                              :width => 110, :height => 90 %>
+                              <% end %>
+                            </li>
+                          <% end %>
                         </ul>
                     </div>
+                    <% end %>
                     <div class="clear1"></div>
                 </div>
                 <!--table-->

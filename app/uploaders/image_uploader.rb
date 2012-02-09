@@ -31,6 +31,10 @@ class ImageUploader < CarrierWave::Uploader::Base
     process :resize_to_fill => [130, 106]
   end
 
+  version :medium do
+    process :resize_to_fill => [353, 288]
+  end
+
   version :for_search do
     process :resize_to_fill => [170, 170]
   end
