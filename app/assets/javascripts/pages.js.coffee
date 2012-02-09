@@ -8,3 +8,15 @@ $(document).ready ->
     $($(this).attr('href')).fadeIn()
     return false
   $('.fancybox').fancybox({cyclic : true, scrolling : 'yes'})
+  $("#stars-wrapper2").stars({
+  	inputType: "select",
+  	disableValue: false
+  });
+  $(".fixed_stars").stars({
+  	inputType: "select",
+  	disabled: true
+  });
+
+
+
+

@@ -10,4 +10,5 @@ ActiveAdmin.register Comment, :as => "ClientComment" do
     default_actions
   end
 
+
 end

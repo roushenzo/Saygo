@@ -5,9 +5,15 @@
 // the compiled file.
 //
 //= require jquery
+//= require jquery-ui
 //= require jquery_ujs
 //= require jquery.fancybox
 //= require jquery.carousel
 //= require countries
 //= require cities
 //= require pages
+//= require jquery.ui.stars
+
+
+‌
+
