@@ -439,7 +439,7 @@ h5{border-bottom:1px solid #daf2f7;
 .row-star{ padding:10px 0 5px 0;}
 .star-left{ width:99px;}
 .star-right{ width:110px;}
-.img-star a{ display:block; float:left; width; background:url(/assets/bg-star1.gif) 0 0 no-repeat; width:18px; height:16px;}
+.img-star a{ display:block; float:left; background:url(/assets/bg-star1.gif) 0 0 no-repeat; width:18px; height:16px;}
 .img-star a:hover{ background:url(/assets/bg-star.gif) 0 0 no-repeat;}
 .link-left{ margin-left:10px;}
 /**/
