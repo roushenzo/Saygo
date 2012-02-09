@@ -33,6 +33,11 @@ class Page < ActiveRecord::Base
     where(:sight_of_the_day => true).last || last
   end
 
+  def average_rate
+    return 0 if comments.count == 0
+    (comments.sum(:rate)/comments.count.to_f).ceil
+  end
+
   def content
     read_attribute(:content).present? ? read_attribute(:content) : default_value_for_content
   end

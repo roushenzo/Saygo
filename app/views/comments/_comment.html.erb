@@ -1,5 +1,5 @@
 <div class="header-reviews">
-  <div class="fixed_stars fright">
+  <div class="page-rate fright">
  <%= select_tag "" , options_for_select([1,2,3,4,5],comment.rate) %>
    </div>
       <p><strong><%= comment.user_name %></strong><%= comment.created_at.strftime('%d.%m.%y') %></p></div>

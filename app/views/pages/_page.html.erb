@@ -10,7 +10,11 @@
             <%= raw truncate_html(page.countent_without_images, :length => 500) %>
         </p>
         <div class="row-star clear">
-            <div class="star-left fleft"><span class="img-star"><a href="#"></a><a href="#"></a><a href="#"></a><a href="#"></a><a href="#"></a></span></div>
+            <div class="star-left fleft">
+              <div class="page-rate fright">
+                <%= select_tag "page-rate#{@page.id}" , options_for_select((0..5).map {|el| [el, el]}, page.average_rate) %>
+              </div>
+            </div>
             <div class="star-right fleft">|&nbsp;  <%= page.updated_at.strftime("%d.%m.%Y") %></div>
         </div>
         <p class="link-top">
