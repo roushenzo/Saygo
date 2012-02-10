@@ -3,9 +3,9 @@
       <div class="clear"><%= breadcrumbs %></div>
         <div class="clear">
           <div class="col-right fright">
-              <!--
-                TODO place real rate here
-              -->
+                <div class="page-rate fright">
+                  <%= select_tag "page-rate#{@page.id}" , options_for_select((0..5).map {|el| [el, el]}, @page.average_rate) %>
+                </div>
                 <h2><%= @page.title %></h2>
                 <div class="row-img-view">
                   <div class="fright">
@@ -45,29 +45,18 @@
                     <% end %>
                     <div class="clear1"></div>
                 </div>
-                <!--table-->
-                <div class="table-header">Представленные бренды</div>
-                <!--
-                  TODO real data
-                -->
-                <table class="table-content">
-                    <tbody><tr>
-                        <td><a href="#">Diesel</a></td>
-                        <td><a href="#">Wrangler</a></td>
-                        <td><a href="#">Adidas</a></td>
-                        <td><a href="#">Diesel</a></td>
-                        <td><a href="#">Wrangler</a></td>
-                        <td><a href="#">Adidas</a></td>
-                    </tr>
-                    <tr class="bg-tab">
-                        <td><a href="#">Adidas</a></td>
-                        <td><a href="#">Diesel</a></td>
-                        <td><a href="#">Wrangler</a></td>
-                        <td><a href="#">Adidas</a></td>
-                        <td><a href="#">Diesel</a></td>
-                        <td><a href="#">Wrangler</a></td>
-                    </tr>
-                </tbody></table>
+                <% @page.multiple_custom_fields.each do |f| %>
+                  <div class="table-header"><%= f.custom_field.name %></div>
+                  <table class='table-content'><tbody>
+                    <% f.values.in_groups_of(6, false).each do |gr| %>
+                      <tr>
+                        <% gr.each do |item| %>
+                          <td><a><%= raw item.name %></a></td>
+                        <% end %>
+                      </tr>
+                    <% end %>
+                  </tbody></table>
+                <% end %>
                <% comments_without_new_recs = @page.comments.reject(&:new_record?) %>
                <% unless comments_without_new_recs.blank? %>
                  <h4 class="title-text1">Отзывы (<%= comments_without_new_recs.count %>)</h4>

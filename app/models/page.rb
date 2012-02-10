@@ -107,6 +107,10 @@ class Page < ActiveRecord::Base
     page_custom_fields.select {|f| f.values.count == 1 }
   end
 
+  def multiple_custom_fields
+    page_custom_fields.select {|f| f.values.count > 1 }
+  end
+
   private
   def reset_show_in_top
     ps = self.class.where(:show_in_top => true,

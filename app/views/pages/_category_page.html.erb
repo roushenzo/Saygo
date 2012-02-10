@@ -5,13 +5,21 @@
             <!--right-->
             <div class="col-right fright">
                 <div class="page-rate fright">
-                <%= select_tag "page-rate#{@page.id}" , options_for_select((0..5).map {|el| [el, el]}, @page.average_rate) %>
+                  <%= select_tag "page-rate#{@page.id}" , options_for_select((0..5).map {|el| [el, el]}, @page.average_rate) %>
                 </div>
                 <h1><%= @page.title %></h1>
                 <div class="text-box clear">
-                  <!--
-                    TODO : insert info block
-                  -->
+                  <% @page.single_custom_fields.in_groups_of(3, false) do |g| %>
+                    <% g.each_with_index do |f, index| %>
+                      <div class='col-<%= index + 1 %> fleft'>
+                        <h4>
+                          <%= image_tag f.custom_field.icon, :alt => f.custom_field.name, :title => f.custom_field.name %>
+                          <%= f.custom_field.name %>
+                        </h4>
+                        <div class='text-indent'><%= raw f.values.first.name %></div>
+                      </div>
+                    <% end %>
+                  <% end %>
                 </div>
                 <p class="indent-top1">
                     <div id="page_content" class="mercury-region clear" data-type="editable">
