@@ -35,7 +35,7 @@
                             <% end %>
                         </ul>
                     </div>
-                  <% comments_without_new_recs=@page.comments.reject(&:new_record?) %>
+                  <% comments_without_new_recs = @page.comments.reject(&:new_record?) %>
                     <% unless comments_without_new_recs.blank? %>
                       <!--Reviews-->
                       <h4 class="title-text1">Отзывы (<%= comments_without_new_recs.count %>)</h4>

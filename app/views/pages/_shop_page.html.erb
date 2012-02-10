@@ -47,6 +47,9 @@
                 </div>
                 <!--table-->
                 <div class="table-header">Представленные бренды</div>
+                <!--
+                  TODO real data
+                -->
                 <table class="table-content">
                     <tbody><tr>
                         <td><a href="#">Diesel</a></td>
@@ -65,6 +68,12 @@
                         <td><a href="#">Wrangler</a></td>
                     </tr>
                 </tbody></table>
+               <% comments_without_new_recs = @page.comments.reject(&:new_record?) %>
+               <% unless comments_without_new_recs.blank? %>
+                 <h4 class="title-text1">Отзывы (<%= comments_without_new_recs.count %>)</h4>
+                   <%= render comments_without_new_recs %>
+               <% end %>
+               <%= render '/comments/form' %>
                 <p class="indent-top">Достопримечательности Европы и достопримечательности Азии, да, наконец,достопримечательности всего мира – кто не мечтал увидеть их своими глазами! Побывать в древних храмах и роскошных дворцах, посетить самые знаменитые музеи, погулять по старинным улочкам тысячелетних европейских городов. Вот только определиться с выбором – куда именно поехать – не всегда бывает просто. Мы решили помочь вам в этом – на нашем сайте вы найдете.</p>
             </div>
             <!--left-->
