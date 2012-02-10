@@ -13,3 +13,4 @@
 //= require cities
 //= require pages
 //= require jquery.ui.stars
+//= require notification

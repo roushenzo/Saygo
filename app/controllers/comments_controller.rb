@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CommentsController < InheritedResources::Base
 
   belongs_to :page
@@ -6,7 +7,7 @@ class CommentsController < InheritedResources::Base
     p params
     @comment = parent.comments.build(params[:comment].merge(:ip => request.remote_ip))
     if @comment.save
-      redirect_to @page.url, :notice => "grats"
+      redirect_to @page.url, :notice => "Вы успешно оставили отзыв!"
     else
       @country = @page.country
       @city = @page.city
