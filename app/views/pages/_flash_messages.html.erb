@@ -1,0 +1,16 @@
+<% if !@comment.blank? && @comment.errors.any? %>
+    <div class="notification fail">
+      <%  @comment.errors.full_messages.each do |message| %>
+        <p><%= message %></p>
+      <% end %>
+      <a class="close" href="javascript:">
+            <%= image_tag "icon-close.png"  %></a>
+    </div>
+<% end %>
+<% if flash[:notice].present? %>
+    <div class="notification success">
+        <p><%= flash[:notice] %></p>
+        <a class="close" href="javascript:">
+            <%= image_tag "icon-close.png"  %></a>
+    </div>
+<% end %>

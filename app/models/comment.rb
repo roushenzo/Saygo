@@ -8,7 +8,7 @@ class Comment < ActiveRecord::Base
   validates :email, :presence => true,
             :format => {:with => email_regex}
   validates_presence_of :user_name
-  validates_presence_of :description
+  validates_presence_of :rate
 
 
 end

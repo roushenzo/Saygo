@@ -10,3 +10,4 @@ $(document).ready ->
   $('.fancybox').fancybox({cyclic : true, scrolling : 'yes'})
   $("#stars-wrapper").stars({inputType: "select"})
   $('.page-rate').stars({inputType: 'select', disabled: true}) #init static stars rate for page
+  $('.notification').notify();
