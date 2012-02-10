@@ -22,6 +22,7 @@ end
 
 after "deploy:update_code", :symlink_config_files
 
+desc 'create symlinks'
 task :symlink_config_files do
   symlinks = {
     "#{shared_path}/config/database.yml" => "#{release_path}/config/database.yml",
@@ -30,4 +31,9 @@ task :symlink_config_files do
   }
   run symlinks.map{|from, to| "ln -nfs #{from} #{to}"}.join(" && ")
   run "chmod -R g+rw #{release_path}/public"
+end
+
+desc 'recreate versions for Photo instances'
+task :recreate_photo_vesrions do
+  run "cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} photo:recreate_versions"
 end
