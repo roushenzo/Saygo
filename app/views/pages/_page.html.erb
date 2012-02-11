@@ -5,7 +5,7 @@
         <% end %>
     </div>
     <div class="col-2 fleft">
-        <h5><%= link_to page.title, page.url %></h5>
+        <h5><%= page.title %></h5>
         <p class="text">
             <%= raw truncate_html(page.countent_without_images, :length => 500) %>
         </p>
