@@ -6,7 +6,7 @@
                 <div class="page-rate fright">
                   <%= select_tag "page-rate#{@page.id}" , options_for_select((0..5).map {|el| [el, el]}, @page.average_rate) %>
                 </div>
-                <h2><%= @page.title %></h2>
+                <h1><%= @page.title %></h1>
                 <div class="row-img-view">
                   <div class="fright">
                       <ul class="list-marker">
@@ -59,7 +59,7 @@
                 <% end %>
                <% comments_without_new_recs = @page.comments.reject(&:new_record?) %>
                <% unless comments_without_new_recs.blank? %>
-                 <h4 class="title-text1">Отзывы (<%= comments_without_new_recs.count %>)</h4>
+                 <h4>Отзывы (<%= comments_without_new_recs.count %>)</h4>
                    <%= render comments_without_new_recs %>
                <% end %>
                <%= render '/comments/form' %>

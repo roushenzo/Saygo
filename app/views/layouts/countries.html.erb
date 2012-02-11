@@ -19,9 +19,10 @@
                     <!--right-->
                     <div class="col-right fright">
                         <% if @sight_of_the_day.present? %>
-                        <h3><%= @sight_of_the_day.title %></h3>
+                            <h1>Достопримечательность дня</h1>
                             <div class="clear">
                               <%= image_tag @sight_of_the_day.featured_image_file.url(:for_search) , :class => "img-indent" %>
+                              <h4><%= @sight_of_the_day.title %></h4>
                               <%= raw truncate_html(@sight_of_the_day.countent_without_images, :length => 1000) %>
                             </div>
                             <p class='link-top'>
@@ -41,12 +42,12 @@
                 <div class="clear">
                     <!--right-->
                     <div class="col-right fright">
-                        <h3 class="title-bottom1"><strong>Топ 10</strong> направлений</h3>
+                        <h2><strong>Топ 10</strong> направлений</h2>
                         <%= top_countries(@top_countries) %>
                     </div>
                     <!--left-->
                     <div class="col-left fleft">
-                       <h3 class="title-bottom">Достопримечательности стран</h3>
+                       <h2>Достопримечательности стран</h2>
                        <div class="text-indent">
                              Достопримечательности Европы и достопримечательности Азии, да, наконец,достопримечательности всего мира – кто не мечтал увидеть их своими глазами! Побывать в древних храмах и роскошных дворцах, посетить самые знаменитые музеи, погулять по старинным улочкам тысячелетних европейских городов. Вот только определиться с выбором – куда именно поехать – не всегда бывает просто. Мы решили помочь вам в этом – на нашем сайте вы найдете описания всех
                         <br>

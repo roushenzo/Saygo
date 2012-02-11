@@ -30,7 +30,7 @@
                     <%= link_to "Edit Page", "/editor#{url_for(@page.url)}", :id => "edit_link", :data => {:save_url => mercury_update_admin_page_path(@page)} %>
                 <% end %>
                 <% if @page.photos.present? %>
-                    <h3 class="title-text title-text-top">Галерея</h3>
+                    <h3 class>Галерея</h3>
                     <!--slider-->
                     <div class="row-slider clear txt1" id='carousel'>
                         <a class="slider-left txt"></a>
@@ -48,7 +48,7 @@
                   <% comments_without_new_recs = @page.comments.reject(&:new_record?) %>
                     <% unless comments_without_new_recs.blank? %>
                       <!--Reviews-->
-                      <h4 class="title-text1">Отзывы (<%= comments_without_new_recs.count %>)</h4>
+                      <h4>Отзывы (<%= comments_without_new_recs.count %>)</h4>
                         <%= render comments_without_new_recs %>
                     <% end %>
                     <%= render '/comments/form' %>
