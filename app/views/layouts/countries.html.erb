@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title><%= @sight_of_the_day.try(:title) || "Туристический портал SayGo - туризм, путешествия, достопримечательности стран" %></title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name='yandex-verification' content='7545b90099830ba1' />
-    <%= meta_tags %>
+    <%= meta_tags(:title => @sight_of_the_day.try(:title) || "Туристический портал SayGo - туризм, путешествия, достопримечательности стран") %>
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
