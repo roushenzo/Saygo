@@ -28,7 +28,7 @@ var{
     vertical-align: top; }
 
  ul {
-	list-style: none;
+	list-style: disc;
 }
 blockquote, q {
 	quotes: none;
