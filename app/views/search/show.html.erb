@@ -16,12 +16,12 @@
             <div class="row1 clear">
                 <div class="row1-col-3 label fleft">Страна:</div>
                 <div class="row1-col-4 fleft">
-                  <%= select_tag :country_id, options_from_collection_for_select(Country.all, :slug, :name, @page.country.try(:slug)) %>
+                  <%= select_tag :country_id, options_from_collection_for_select(Country.all, :slug, :name, @page.country.try(:slug)),:prompt => 'Не выбрано' %>
                 </div>
                 <div class="row1-col-5 label fleft">Город:</div>
                 <div class="row1-col-6 fleft">
                   <%= select_tag :city_id,
-                            options_from_collection_for_select(@page.country.try(:cities) || [], :slug, :name, @page.city.try(:slug)) %>
+                            options_from_collection_for_select(@page.country.try(:cities) || [], :slug, :name, @page.city.try(:slug)), :prompt => 'Не выбрано' %>
                 </div>
                 <div class="row1-col-7 label fleft">Название:</div>
                 <div class="row1-col-6 fleft"><%= text_field_tag :title, @page.title %></div>
