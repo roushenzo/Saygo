@@ -20,11 +20,13 @@
                     <div class="col-right fright">
                         <% if @sight_of_the_day.present? %>
                             <h1>Достопримечательность дня</h1>
+                            <noindex>
                             <div class="clear">
                               <%= image_tag @sight_of_the_day.featured_image_file.url(:for_search) , :class => "img-indent" %>
                               <h4><%= @sight_of_the_day.title %></h4>
                               <%= raw truncate_html(@sight_of_the_day.countent_without_images, :length => 1000) %>
                             </div>
+                            </noindex>
                             <p class='link-top'>
                                 <%= link_to 'Подробнее',
                                         page_path(@sight_of_the_day.country, @sight_of_the_day.city, @sight_of_the_day.category, @sight_of_the_day), :class => 'link' %>
@@ -48,7 +50,6 @@
                     <!--left-->
                     <div class="col-left fleft">
                        <h3 class="title-bottom">Достопримечательности стран</h3>
-                      <noindex>
                        <div class="text-indent" align="justify">
                             <p>Мир путешественников не знает границ. Жажда исследования новых земель и расширения собственных горизонтов познания сажает нас в скоростные поезда, обдает солеными брызгами морских волн на трансатлантических теплоходах, холодит сердце воздушными ямами тысячекилометровых авиаперелетов.  Все это мы бесстрашно преодолеваем, чтобы увидеть самые интересные <B>достопримечательности мира</B>, познакомиться с культурой неизвестных нам ранее народов, населяющих одну для всех нас планету.
                             </p><br>
@@ -75,7 +76,6 @@
                             Если в ближайшее время вы не планируете отправляться в дальнее путешествие, не спешите покидать страницы нашего сайта: из них вы почерпнете очень много нового и интересного для себя. А кроме того, никто из нас не знает, куда его в следующую минуту забросит капризная судьба.
 
                       </div>
-                      </noindex>
                     </div>
                 </div>
             </div>
