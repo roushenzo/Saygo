@@ -26,7 +26,7 @@ module PagesHelper
 
   def top_menu(page)
     res = []
-    res << content_tag(:h3, content_tag(:strong, 'Топ 10').html_safe + content_tag(:span, side_menu_title).html_safe,
+    res << content_tag(:h3, content_tag(:strong, 'Топ').html_safe + content_tag(:span, side_menu_title).html_safe,
                         :class => 'title-bottom1').html_safe
     res << content_tag(:ul, menu_items_for_page(page), :class => 'list1-top-10').html_safe
     res.join.html_safe
