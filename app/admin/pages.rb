@@ -48,7 +48,7 @@ ActiveAdmin.register Page do
       f.has_many :page_custom_fields do |cf|
         cf.input :custom_field, :as => :select
         cf.input :values, :as => :check_boxes
-        cf.has_many :values do |cfv|
+        cf.semantic_fields_for cf.object.values.new do |cfv|
           cfv.input :name
         end
         cf.input :_destroy, :as => :boolean, :label => 'Remove', :hint => "Deletes this custom field. You should press 'Update|Craete page button' to get effect"
