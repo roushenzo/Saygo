@@ -5,7 +5,8 @@ Saygo::Application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :admin_users, ActiveAdmin::Devise.config
   root :to => 'countries#index'
-
+  match 'categories/:category_id/custom_fields', :to => 'custom_fields#index', :as => :category_custom_fields, :via => :get
+  match 'custom_fields/:custom_field_id/values.json', :to => 'values#index', :as => :custom_field_values, :via => :get, :format=>false, :defaults=>{:format=>'json'}
   match 'countries/:country_id/cities', :to => 'cities#index', :as => :country_cities, :via => :get
   match ':country_id(/:city_id(/:category_id(/:id)))', :to => 'pages#show', :as => :page, :via => :get
   match 'countries/:country_id/cities', :to => 'cities#index', :as => :country_cities, :via => :get
