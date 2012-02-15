@@ -1,6 +1,7 @@
 class PagesController < InheritedResources::Base
   def show
-    @page = Page.search(params.merge(:force => true)).first
+
+    @page = admin_user_signed_in? ? Page.unscoped.search(params.merge(:force => true)).first : Page.search(params.merge(:force => true)).first
     raise ActiveRecord::RecordNotFound unless @page
     @country = @page.country
     @city = @page.city

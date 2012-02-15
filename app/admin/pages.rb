@@ -56,7 +56,7 @@ ActiveAdmin.register Page do
     end
 
     f.inputs 'Boolean flags' do
-      f.input :active, :hint => 'Check this field if you want to hide this page. Users wont see this page at all'
+      f.input :active, :hint => 'Uncheck this field if you want to hide this page. Users wont see this page at all'
       f.input :sight_of_the_day, :hint => 'Show this page on the mane page - it is the featured page'
       f.input :show_in_top, :hint => 'Check if you want to show this object on top 10 block'
       f.input :show_first, :hint => 'If page is a desription page, this page will be showd first, e.g. when if click on the country or city link'
@@ -80,7 +80,7 @@ ActiveAdmin.register Page do
   end
 
   member_action :mercury_update, :method => :put do
-    @page = Page.find(params[:id])
+    @page = Page.unscoped.find(params[:id])
     @page.content = params[:content][:page_content][:value]
     @page.save!
     flash[:notice] = 'Page was updated successfully.'
