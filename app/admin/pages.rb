@@ -38,6 +38,7 @@ ActiveAdmin.register Page do
     f.inputs "General info" do
       f.input :title
       f.input :show_all_button_text
+      f.input :address
       f.input :country, :as => :select
       f.input :city, :as => :select
       f.input :description_type
