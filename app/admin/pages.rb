@@ -42,6 +42,7 @@ ActiveAdmin.register Page do
       f.input :city, :as => :select
       f.input :description_type
       f.input :category, :as => :select
+      f.input :address
     end
 
     f.inputs 'Custom fields' do
