@@ -57,13 +57,13 @@
                     <% end %>
                   </tbody></table>
                 <% end %>
+               <p class="indent-top"><%= @page.brief_description %></p>
                <% comments_without_new_recs = @page.comments.reject(&:new_record?) %>
                <% unless comments_without_new_recs.blank? %>
                  <h4>Отзывы (<%= comments_without_new_recs.count %>)</h4>
                    <%= render comments_without_new_recs %>
                <% end %>
                <%= render '/comments/form' %>
-                <p class="indent-top">Достопримечательности Европы и достопримечательности Азии, да, наконец,достопримечательности всего мира – кто не мечтал увидеть их своими глазами! Побывать в древних храмах и роскошных дворцах, посетить самые знаменитые музеи, погулять по старинным улочкам тысячелетних европейских городов. Вот только определиться с выбором – куда именно поехать – не всегда бывает просто. Мы решили помочь вам в этом – на нашем сайте вы найдете.</p>
             </div>
             <!--left-->
             <div class="col-left fleft">
