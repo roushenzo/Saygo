@@ -22,6 +22,7 @@ ActiveAdmin.register CustomField do
       end
       f.input :icon, :as => :file
       f.input :remote_icon_url, :as => :url
+      f.input :show_type, :as => :select , :collection => CustomField::TYPES, :prompt => false
       f.input :categories, :as => :check_boxes
     end
     f.inputs 'Values' do
