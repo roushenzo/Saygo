@@ -22,7 +22,7 @@
                             <h1>Достопримечательность дня</h1>
                             <noindex>
                             <div class="clear">
-                              <%= image_tag @sight_of_the_day.featured_image_file.url(:for_search) , :class => "img-indent" %>
+                              <%= image_tag @sight_of_the_day.featured_image_file.url(:for_search), :class => "img-indent" %>
                               <h4><%= @sight_of_the_day.title %></h4>
                               <%= raw truncate_html(@sight_of_the_day.countent_without_images, :length => 1000) %>
                             </div>
